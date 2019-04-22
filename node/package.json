@@ -1,0 +1,26 @@
+{
+  "name": "admin-customers-graphql",
+  "version": null,
+  "description": "GraphQL API for CRM",
+  "main": "index.ts",
+  "author": "Ana Luiza",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-datasource-rest": "^0.3.2",
+    "cookie": "^0.3.1",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.0.7",
+    "@types/koa": "^2.0.46",
+    "@types/node": "^7.10.5",
+    "@types/ramda": "types/npm-ramda#dist",
+    "@vtex/api": "3.4.0",
+    "tslint": "^5.9.1",
+    "tslint-config-vtex": "^2.0.0",
+    "typescript": "^2.4.2"
+  },
+  "scripts": {
+    "lint": "tsc --noEmit && tslint -c tslint.json './**/*.ts'"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "types": ["node"],
+    "lib": ["esnext.asynciterable", "es2017"],
+    "typeRoots": ["node_modules/@types"],
+    "target": "es2017",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "noEmitOnError": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "typeAcquisition": {
+    "enable": false
+  },
+  "include": ["./**/*", "../typedql/**/*.ts"],
+  "exclude": ["node_modules"],
+  "compileOnSave": true
+}
