@@ -1,0 +1,28 @@
+{
+  "vendor": "vtex",
+  "name": "admin-customers-graphql",
+  "version": "0.1.0",
+  "title": "CRM GraphQL",
+  "description": "GraphQL API for Customer Relationship Management",
+  "dependencies": {},
+  "builders": {
+    "typedql": "0.x",
+    "node": "4.x"
+  },
+  "registries": [
+    "smartcheckout"
+  ],
+  "scripts": {
+    "postreleasy": "vtex publish --public"
+  },
+  "credentialType": "absolute",
+  "policies": [
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.vtexcommercestable.com.br",
+        "path": "/api/dataentities/*"
+      }
+    }
+  ]
+}
