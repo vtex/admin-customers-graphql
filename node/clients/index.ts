@@ -1,5 +1,6 @@
 import { AuthType, ClientsConfig, IOClients, LRUCache } from '@vtex/api'
 import SchemaDataSource from './schemas'
+import DocumentsDataSource from './documents'
 import { forEachObjIndexed } from 'ramda'
 
 const memoryCache = {
@@ -14,7 +15,10 @@ export class Clients extends IOClients {
   public get schemas(): SchemaDataSource {
     return this.getOrSet('schemas', SchemaDataSource)
   }
-}
+  public get documents(): DocumentsDataSource {
+    return this.getOrSet('documents', DocumentsDataSource)
+    
+  }}
 
 export const clients: ClientsConfig<Clients> = {
   implementation: Clients,
@@ -25,7 +29,10 @@ export const clients: ClientsConfig<Clients> = {
     },
     schemas: {
       authType: AuthType.bearer,
-      memoryCache: memoryCache.schema,
+      memoryCache: memoryCache.schema,}
+    default: defaultClientOptions,
+    documents: {
+      authType: AuthType.bearer,
     },
   },
 }
