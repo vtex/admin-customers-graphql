@@ -51,7 +51,7 @@ class DocumentsDataSource extends IODataSource {
       await this.http.get<RawDocumentGETResponse>(
         `${DATA_ENTITY}/documents/${id}`,
         {
-          metric: 'crm-create-document',
+          metric: 'crm-get-document',
         }
       )
     )
