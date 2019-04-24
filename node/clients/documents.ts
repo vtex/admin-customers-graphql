@@ -4,7 +4,6 @@ import { Document, DocumentPOSTResponse } from '../../typedql/types/Document'
 import { DATA_ENTITY } from '../constants'
 import { mapKeyValues } from '../utils'
 import forProfile from './client'
-import { memoryCache } from './index'
 
 interface RawDocumentPOSTResponse {
   Id: string
@@ -37,7 +36,7 @@ const parseDocumentGETResponse = ({
   id,
 })
 
-const factory = forProfile(memoryCache.documents)
+const factory = forProfile
 
 // https://documenter.getpostman.com/view/164907/master-data-api-v2-beta/7EHbXTe#4dd0c083-527d-13de-c30a-b26d5cd68c56
 class DocumentsDataSource extends IODataSource {

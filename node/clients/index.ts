@@ -35,6 +35,7 @@ export const clients: ClientsConfig<Clients> = {
     default: defaultClientOptions,
     documents: {
       authType: AuthType.bearer,
+      memoryCache: memoryCache.documents,
     },
   },
 }
