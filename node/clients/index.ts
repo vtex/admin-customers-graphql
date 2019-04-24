@@ -25,6 +25,7 @@ export const clients: ClientsConfig<Clients> = {
     },
     schemas: {
       authType: AuthType.bearer,
+      memoryCache: memoryCache.schema,
     },
   },
 }
