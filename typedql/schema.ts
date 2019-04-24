@@ -15,9 +15,16 @@ export interface Mutation {
    */
 
   /**
-   * Save given documents.
+   * Save given document.
    *
-   * @param documents Documents to be saved.
+   * @param document Document to be saved.
    */
-  saveDocuments(documents: DocumentsInput): Document[]
+  saveDocument(document: DocumentInput): DocumentResponse
+
+  /**
+   * Updates a given document.
+   *
+   * @param document Document to be updated.
+   */
+  updateDocument(document: DocumentInput): DocumentResponse
 }

@@ -1,14 +1,33 @@
 import { ID } from './scalars'
 
 export interface Document {
-  id: ID
+  /** id is used as cacheId */
+  cacheId: ID
+  id: string
+  fields: Field[]
+}
+
+export interface Field {
+  key: string
+  value: string
+}
+
+export interface DocumentResponse {
+  /** documentId is used as cacheId */
+  cacheId: ID
+  id: string
+  href: string
+  documentId: string
 }
 
 /** Documents Input object to be used in Mutation */
 /** @graphql input */
-export interface DocumentsInput {
-  [key: string]: {
-    status: string
-    document: Document
-  }
+export interface DocumentInput {
+  fields: FieldInput[]
+}
+
+/** @graphql input */
+export interface FieldInput {
+  key: string
+  value: string
 }
