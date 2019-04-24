@@ -12,7 +12,7 @@ export interface Field {
   value: string
 }
 
-export interface DocumentResponse {
+export interface DocumentPOSTResponse {
   /** documentId is used as cacheId */
   cacheId: ID
   id: string

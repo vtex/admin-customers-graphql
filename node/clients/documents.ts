@@ -1,13 +1,40 @@
 import { IODataSource, LRUCache } from '@vtex/api'
 
+import { Document, DocumentPOSTResponse } from '../../typedql/types/Document'
 import { DATA_ENTITY } from '../constants'
+import { mapKeyValues } from '../utils'
 import forProfile from './client'
 
-export interface RawDocumentResponse {
+interface RawDocumentPOSTResponse {
   Id: string
   DocumentId: string
   Href: string
 }
+
+const parseDocumentPOSTResponse = ({
+  Id: id,
+  Href: href,
+  DocumentId: documentId,
+}: RawDocumentPOSTResponse): DocumentPOSTResponse => ({
+  cacheId: documentId,
+  documentId,
+  href,
+  id,
+})
+
+interface RawDocumentGETResponse {
+  id: string
+  [key: string]: any
+}
+
+const parseDocumentGETResponse = ({
+  id,
+  ...rest
+}: RawDocumentGETResponse): Document => ({
+  cacheId: id,
+  fields: mapKeyValues(rest),
+  id,
+})
 
 const memoryCache = new LRUCache<string, any>({ max: 4000 })
 
@@ -19,12 +46,28 @@ const factory = forProfile(memoryCache, metrics)
 class DocumentsDataSource extends IODataSource {
   protected httpClientFactory = factory
 
-  public save = (document: any): Promise<RawDocumentResponse> =>
-    this.http.post(`dataentities/${DATA_ENTITY}/documents`, document, {
-      metric: 'crm-create-document',
-    })
+  public get = async (id: string): Promise<Document> =>
+    parseDocumentGETResponse(
+      await this.http.get<RawDocumentGETResponse>(
+        `dataentities/${DATA_ENTITY}/documents/${id}`,
+        {
+          metric: 'crm-create-document',
+        }
+      )
+    )
 
-  public update = (document: any, key?: string): Promise<RawDocumentResponse> =>
+  public save = async (document: any): Promise<DocumentPOSTResponse> =>
+    parseDocumentPOSTResponse(
+      await this.http.post<RawDocumentPOSTResponse>(
+        `dataentities/${DATA_ENTITY}/documents`,
+        document,
+        {
+          metric: 'crm-create-document',
+        }
+      )
+    )
+
+  public update = (document: any, key?: string): Promise<void> =>
     this.http.patch(
       `dataentities/${DATA_ENTITY}/documents/${key || ''}`,
       document,

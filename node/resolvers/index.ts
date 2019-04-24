@@ -11,6 +11,7 @@ export const resolvers = {
   Query: {
     ...schemasQueries,
   },
+  // tslint:disable-next-line
   Mutation: {
     ...documentMutations,
   },

@@ -1,5 +1,5 @@
-import { Document, DocumentsInput } from './types/Document'
 import { SchemaResponse } from './types/SchemaResponse'
+import { Document, DocumentPOSTResponse, DocumentInput } from './types/Document'
 
 export interface Query {
   /**
@@ -19,12 +19,12 @@ export interface Mutation {
    *
    * @param document Document to be saved.
    */
-  saveDocument(document: DocumentInput): DocumentResponse
+  saveDocument(document: DocumentInput): DocumentPOSTResponse
 
   /**
    * Updates a given document.
    *
    * @param document Document to be updated.
    */
-  updateDocument(document: DocumentInput): DocumentResponse
+  updateDocument(document: DocumentInput): Document
 }
