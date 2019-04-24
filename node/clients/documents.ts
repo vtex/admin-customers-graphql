@@ -49,7 +49,7 @@ class DocumentsDataSource extends IODataSource {
   public get = async (id: string): Promise<Document> =>
     parseDocumentGETResponse(
       await this.http.get<RawDocumentGETResponse>(
-        `dataentities/${DATA_ENTITY}/documents/${id}`,
+        `${DATA_ENTITY}/documents/${id}`,
         {
           metric: 'crm-create-document',
         }
@@ -59,7 +59,7 @@ class DocumentsDataSource extends IODataSource {
   public save = async (document: any): Promise<DocumentPOSTResponse> =>
     parseDocumentPOSTResponse(
       await this.http.post<RawDocumentPOSTResponse>(
-        `dataentities/${DATA_ENTITY}/documents`,
+        `${DATA_ENTITY}/documents`,
         document,
         {
           metric: 'crm-create-document',
@@ -69,7 +69,7 @@ class DocumentsDataSource extends IODataSource {
 
   public update = (document: any, key?: string): Promise<void> =>
     this.http.patch(
-      `dataentities/${DATA_ENTITY}/documents/${key || ''}`,
+      `${DATA_ENTITY}/documents/${key || ''}`,
       document,
       {
         metric: 'crm-update-document',
