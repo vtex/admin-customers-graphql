@@ -6,7 +6,7 @@ import {
 import { parseFieldsToJson } from '../../utils'
 
 export const mutations = {
-  saveDocument: async (
+  saveDocument: (
     _: any,
     { document }: { document: DocumentInput },
     ctx: Context
@@ -14,7 +14,7 @@ export const mutations = {
     const {
       clients: { documents },
     } = ctx
-    return await documents.save(parseFieldsToJson(document.fields))
+    return documents.save(parseFieldsToJson(document.fields))
   },
   updateDocument: async (
     _: any,

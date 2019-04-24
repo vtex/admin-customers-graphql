@@ -1,9 +1,10 @@
-import { IODataSource, LRUCache } from '@vtex/api'
+import { IODataSource } from '@vtex/api'
 
 import { Document, DocumentPOSTResponse } from '../../typedql/types/Document'
 import { DATA_ENTITY } from '../constants'
 import { mapKeyValues } from '../utils'
 import forProfile from './client'
+import { memoryCache } from './index'
 
 interface RawDocumentPOSTResponse {
   Id: string
@@ -36,11 +37,7 @@ const parseDocumentGETResponse = ({
   id,
 })
 
-const memoryCache = new LRUCache<string, any>({ max: 4000 })
-
-metrics.trackCache('documents', memoryCache)
-
-const factory = forProfile(memoryCache, metrics)
+const factory = forProfile(memoryCache.documents)
 
 // https://documenter.getpostman.com/view/164907/master-data-api-v2-beta/7EHbXTe#4dd0c083-527d-13de-c30a-b26d5cd68c56
 class DocumentsDataSource extends IODataSource {

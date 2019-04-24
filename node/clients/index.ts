@@ -4,6 +4,7 @@ import DocumentsDataSource from './documents'
 import { forEachObjIndexed } from 'ramda'
 
 const memoryCache = {
+  documents: new LRUCache<string, any>({ max: 4000 }),
   schema: new LRUCache<string, any>({ max: 4000 }),
 }
 
@@ -17,8 +18,8 @@ export class Clients extends IOClients {
   }
   public get documents(): DocumentsDataSource {
     return this.getOrSet('documents', DocumentsDataSource)
-    
-  }}
+  }
+}
 
 export const clients: ClientsConfig<Clients> = {
   implementation: Clients,
@@ -29,7 +30,8 @@ export const clients: ClientsConfig<Clients> = {
     },
     schemas: {
       authType: AuthType.bearer,
-      memoryCache: memoryCache.schema,}
+      memoryCache: memoryCache.schema,
+    },
     default: defaultClientOptions,
     documents: {
       authType: AuthType.bearer,
