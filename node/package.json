@@ -16,11 +16,12 @@
     "@types/node": "^7.10.5",
     "@types/ramda": "types/npm-ramda#dist",
     "@vtex/api": "3.4.0",
-    "tslint": "^5.9.1",
-    "tslint-config-vtex": "^2.0.0",
-    "typescript": "^2.4.2"
+    "eslint": "^5.16.0",
+    "eslint-config-vtex": "^10.1.0",
+    "prettier": "^1.17.0",
+    "typescript": "^3.4.5"
   },
   "scripts": {
-    "lint": "tsc --noEmit && tslint -c tslint.json './**/*.ts'"
+    "lint": "eslint --ext .ts ."
   }
 }
