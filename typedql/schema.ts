@@ -6,12 +6,19 @@ import {
   DocumentPOSTResponse,
   DocumentInput,
 } from './types/Document'
+import { User } from './types/User'
 
 export interface Query {
   /**
    * Get schema of CRM
    */
   getSchema: SchemaResponse
+
+  /**
+   * Get Users of CRM
+   */
+  getUsers: User[]
+
 }
 
 export interface Mutation {

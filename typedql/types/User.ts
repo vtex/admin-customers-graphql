@@ -1,54 +1,54 @@
 import { ID } from './scalars'
 
 export interface User {
-  profilePicture: string
-  isCorporate: boolean
-  tradeName: string
-  rcLastcart: string
-  rcLastcartvalue: string
-  rcLastsession: string
-  rcLastsessiondate: string
-  homePhone: string
-  phone: string
-  brandPurchasedTag: string
-  brandVisitedTag: string
-  categoryPurchasedTag: string
-  categoryVisitedTag: string
-  departmentVisitedTag: string
-  productPurchasedTag: string
-  productVisitedTag: string
-  stateRegistration: string
+  profilePicture?: string
+  isCorporate?: boolean
+  tradeName?: string
+  rcLastCart?: string
+  rcLastCartValue?: string
+  rcLastSession?: string
+  rcLastSessionDate?: string
+  homePhone?: string
+  phone?: string
+  brandPurchasedTag?: string
+  brandVisitedTag?: string
+  categoryPurchasedTag?: string
+  categoryVisitedTag?: string
+  departmentVisitedTag?: string
+  productPurchasedTag?: string
+  productVisitedTag?: string
+  stateRegistration?: string
   email: string
-  userId: ID
-  firstName: string
-  lastName: string
-  document: string
-  isNewsletterOptIn: boolean
-  localeDefault: string
-  attach: string
-  approved: string
-  birthDate: string
-  businessPhone: string
-  cartTag: string
-  checkoutTag: string
-  corporateDocument: string
-  corporateName: string
-  documentType: string
-  gender: string
-  visitedProductWithStockOutSkusTag: string
-  customerClass: string
-  priceTables: string
+  userId?: ID
+  firstName?: string
+  lastName?: string
+  document?: string
+  isNewsletterOptIn?: boolean
+  localeDefault?: string
+  attach?: string
+  approved?: string
+  birthDate?: string
+  businessPhone?: string
+  cartTag?: string
+  checkoutTag?: string
+  corporateDocument?: string
+  corporateName?: string
+  documentType?: string
+  gender?: string
+  visitedProductWithStockOutSkusTag?: string
+  customerClass?: string
+  priceTables?: string
   id: ID
   accountId: string
   accountName: string
   dataEntityId: string
-  createdBy: string
-  createdIn: string
-  updatedBy: string
-  updatedIn: string
-  lastInteractionBy: string
-  lastInteractionIn: string
-  followers: string[]
-  tags: string[]
-  auto_filter: string
+  createdBy?: string
+  createdIn?: string
+  updatedBy?: string
+  updatedIn?: string
+  lastInteractionBy?: string
+  lastInteractionIn?: string
+  followers?: string[]
+  tags?: string[]
+  autoFilter?: string
 }
