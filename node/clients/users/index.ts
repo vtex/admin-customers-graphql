@@ -7,7 +7,7 @@ class UserDataSource extends IODataSource {
   protected httpClientFactory = factory
 
   public getUsers = (filter : string) =>
-    this.http.get(`${DATA_ENTITY}/search?_fields=all${filter ? `&${filter}` : '' }`, {
+    this.http.get(`${DATA_ENTITY}/search?_fields=all${filter && `&${filter}`}`, {
       metric: 'crm-get-users',
     })
 }
