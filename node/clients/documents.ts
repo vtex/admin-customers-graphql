@@ -1,4 +1,5 @@
 import { IODataSource } from '@vtex/api'
+import { prop } from 'ramda'
 
 import { Document, DocumentPOSTResponse } from '../../typedql/types/Document'
 import { DATA_ENTITY } from '../utils/constants'
@@ -64,13 +65,16 @@ class DocumentsDataSource extends IODataSource {
     )
 
   public update = (document: any, key?: string): Promise<void> =>
-    this.http.patch(
-      `${DATA_ENTITY}/documents/${key || ''}`,
-      document,
-      {
-        metric: 'crm-update-document',
-      }
-    )
+    this.http.patch(`${DATA_ENTITY}/documents/${key || ''}`, document, {
+      metric: 'crm-update-document',
+    })
+
+  public delete = (id: string): Promise<void> =>
+    this.http
+      .delete(`${DATA_ENTITY}/documents/${id}`, {
+        metric: 'crm-delete-document',
+      })
+      .then(prop('data'))
 }
 
 export default DocumentsDataSource

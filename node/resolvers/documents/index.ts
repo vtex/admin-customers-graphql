@@ -1,3 +1,4 @@
+import { ID } from '../../../typedql/types/scalars'
 import {
   Document,
   DocumentInput,
@@ -27,5 +28,16 @@ export const mutations = {
     const updatedDocument = parseFieldsToJson(document.fields)
     await documents.update(updatedDocument, updatedDocument.id)
     return documents.get(updatedDocument.id)
+  },
+  deleteDocument: async (
+    _: any,
+    { id }: { id: ID },
+    ctx: Context
+  ): Promise<Document> => {
+    const {
+      clients: { documents },
+    } = ctx
+    await documents.delete(id)
+    return { cacheId: id, id }
   },
 }

@@ -3,8 +3,8 @@ import { ID } from './scalars'
 export interface Document {
   /** id is used as cacheId */
   cacheId: ID
-  id: string
-  fields: Field[]
+  id: ID
+  fields?: Field[]
 }
 
 export interface Field {
@@ -15,7 +15,7 @@ export interface Field {
 export interface DocumentPOSTResponse {
   /** documentId is used as cacheId */
   cacheId: ID
-  id: string
+  id: ID
   href: string
   documentId: string
 }
