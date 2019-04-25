@@ -3,7 +3,7 @@ import SchemaDataSource from './schemas'
 import { forEachObjIndexed } from 'ramda'
 
 const memoryCache = {
-  schema: new LRUCache<string, any>({ max: 4000 })
+  schema: new LRUCache<string, any>({ max: 4000 }),
 }
 
 forEachObjIndexed((cacheInstance: LRUCache<string, any>, cacheName: string) => {
@@ -21,7 +21,7 @@ export const clients: ClientsConfig<Clients> = {
   options: {
     default: {
       retries: 1,
-      timeout: 2000
+      timeout: 2000,
     },
     schemas: {
       authType: AuthType.bearer,
