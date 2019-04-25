@@ -1,12 +1,17 @@
+import { ID } from './types/scalars'
 import { SchemaResponse } from './types/SchemaResponse'
-import { Document, DocumentPOSTResponse, DocumentInput } from './types/Document'
+import {
+  CacheableDocument,
+  Document,
+  DocumentPOSTResponse,
+  DocumentInput,
+} from './types/Document'
 
 export interface Query {
   /**
    * Get schema of CRM
    */
   getSchema: SchemaResponse
-
 }
 
 export interface Mutation {
@@ -27,4 +32,11 @@ export interface Mutation {
    * @param document Document to be updated.
    */
   updateDocument(document: DocumentInput): Document
+
+  /**
+   * Deletes the document with the given ID.
+   *
+   * @param document Document to be deleted.
+   */
+  deleteDocument(id: ID): CacheableDocument
 }

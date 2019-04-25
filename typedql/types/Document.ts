@@ -1,9 +1,12 @@
 import { ID } from './scalars'
 
-export interface Document {
+export interface CacheableDocument {
   /** id is used as cacheId */
   cacheId: ID
-  id: string
+  id: ID
+}
+
+export interface Document extends CacheableDocument {
   fields: Field[]
 }
 
@@ -12,10 +15,8 @@ export interface Field {
   value: string
 }
 
-export interface DocumentPOSTResponse {
+export interface DocumentPOSTResponse extends CacheableDocument {
   /** documentId is used as cacheId */
-  cacheId: ID
-  id: string
   href: string
   documentId: string
 }
