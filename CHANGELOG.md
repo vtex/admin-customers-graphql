@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.4.0] - 2019-04-25
+
+### Added
+
+- Add `saveDocument` and `updateDocument` mutations.
+
 ## [0.3.0] - 2019-04-25
 
 ### Changed

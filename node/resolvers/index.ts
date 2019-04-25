@@ -3,11 +3,15 @@ import {
   propertiesFieldResolvers,
   queries as schemasQueries,
 } from './schemas'
+import { mutations as documentMutations } from './documents'
 
 export const resolvers = {
   ...schemasResolvers,
   ...propertiesFieldResolvers,
   Query: {
     ...schemasQueries,
+  },
+  Mutation: {
+    ...documentMutations,
   },
 }
