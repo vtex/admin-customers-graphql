@@ -1,7 +1,7 @@
 import { IODataSource } from '@vtex/api'
 
 import { Document, DocumentPOSTResponse } from '../../typedql/types/Document'
-import { DATA_ENTITY } from '../constants'
+import { DATA_ENTITY } from '../utils/constants'
 import { mapKeyValues } from '../utils'
 import forProfile from './client'
 
