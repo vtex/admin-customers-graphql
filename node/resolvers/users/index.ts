@@ -1,12 +1,12 @@
 import { prop } from 'ramda'
 
 export const queries = {
-  getUsers: (_: any, __: any, ctx: Context) => {
+  getUsers: (_: any, {filter}: any, ctx: Context) => {
     const {
       clients: { users },
     } = ctx
 
-    return users.getUsers()
+    return users.getUsers(filter)
   },
 }
 

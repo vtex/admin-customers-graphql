@@ -17,7 +17,7 @@ export interface Query {
   /**
    * Get Users of CRM
    */
-  getUsers: User[]
+  getUsers(filter: string): User[]
 
 }
 

@@ -6,8 +6,8 @@ import factory from '../client'
 class UserDataSource extends IODataSource {
   protected httpClientFactory = factory
 
-  public getUsers = () =>
-    this.http.get(`${DATA_ENTITY}/search?_fields=all`, {
+  public getUsers = (filter : string) =>
+    this.http.get(`${DATA_ENTITY}/search?_fields=all${filter ? `&${filter}` : '' }`, {
       metric: 'crm-get-users',
     })
 }
