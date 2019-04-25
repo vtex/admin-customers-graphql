@@ -1,6 +1,7 @@
 import { ID } from './types/scalars'
 import { SchemaResponse } from './types/SchemaResponse'
 import {
+  CacheableDocument,
   Document,
   DocumentPOSTResponse,
   DocumentInput,
@@ -37,5 +38,5 @@ export interface Mutation {
    *
    * @param document Document to be deleted.
    */
-  deleteDocument(id: ID): Document
+  deleteDocument(id: ID): CacheableDocument
 }

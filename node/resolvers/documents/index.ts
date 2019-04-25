@@ -1,5 +1,6 @@
 import { ID } from '../../../typedql/types/scalars'
 import {
+  CacheableDocument,
   Document,
   DocumentInput,
   DocumentPOSTResponse,
@@ -33,7 +34,7 @@ export const mutations = {
     _: any,
     { id }: { id: ID },
     ctx: Context
-  ): Promise<Document> => {
+  ): Promise<CacheableDocument> => {
     const {
       clients: { documents },
     } = ctx
