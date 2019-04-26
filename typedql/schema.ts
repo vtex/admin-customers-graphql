@@ -1,4 +1,4 @@
-import { ID } from './types/scalars'
+import { ID, Int } from './types/scalars'
 import { SchemaResponse } from './types/SchemaResponse'
 import {
   CacheableDocument,
@@ -17,7 +17,7 @@ export interface Query {
   /**
    * Get Users of CRM
    */
-  getUsers(filter: string): User[]
+  getUsers(filter: string, perPage: Int, pageNumber:Int): User[]
 
 }
 

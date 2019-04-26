@@ -1,12 +1,13 @@
 import { prop } from 'ramda'
 
 export const queries = {
-  getUsers: (_: any, {filter}: any, ctx: Context) => {
+  getUsers: (_: any, args: any, ctx: Context) => {
+    const { filter, perPage, pageNumber} = args
     const {
       clients: { users },
     } = ctx
-
-    return users.getUsers(filter)
+    console.log(perPage, pageNumber)
+    return users.getUsers(filter, perPage, pageNumber)
   },
 }
 
