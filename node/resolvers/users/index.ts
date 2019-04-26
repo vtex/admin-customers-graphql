@@ -13,12 +13,11 @@ export const queries = {
 export const fieldResolvers = {
   User: {
     rcLastCart: prop('rclastcast'),
-    rcLastCartValue: prop('rclastcar'),
+    rcLastCartValue: prop('rclastcartvalue'),
     rcLastSession: prop('rclastsession'),
     rcLastSessionDate: prop('rclastsessiondate'),
     cartTag: prop('carttag'),
     checkoutTag: prop('checkouttag'),
-    corporateDocument: prop('corporateDocument'),
     autoFilter: prop('auto_filter'),
   },
 }
