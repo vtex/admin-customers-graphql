@@ -16,6 +16,9 @@ export interface Query {
 
   /**
    * Get Users of CRM
+   * @param filter Filter for help in query. You should use the sql sintax. 
+   * @param perPage Number of items by page.
+   * @param pageNumber The page number
    */
   getUsers(filter: string, perPage: Int, pageNumber:Int): User[]
 
