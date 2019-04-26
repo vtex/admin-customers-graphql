@@ -1,4 +1,21 @@
-import { ID } from './scalars'
+import { ID, Int } from './scalars'
+
+
+export interface Tag {
+  displayValue?: string
+  scores?: TagElement
+}
+
+export interface TagElement {
+  name?: string
+  registers?: Score[]
+}
+
+export interface Score {
+  point?: Int
+  date?: string
+  until?: string
+}
 
 export interface User {
   /**
@@ -20,17 +37,17 @@ export interface User {
   /** Registered phone no. of customer */
   homePhone?: string
   phone?: string
-  brandPurchasedTag?: string
+  brandPurchasedTag?: Tag
   /** List of last brands visited */
-  brandVisitedTag?: string
-  categoryPurchasedTag?: string
+  brandVisitedTag?: Tag
+  categoryPurchasedTag?: Tag
   /** List of last categories visited */
-  categoryVisitedTag?: string
+  categoryVisitedTag?: Tag
   /** List of IDs of last products visited */
-  departmentVisitedTag?: string
-  productPurchasedTag?: string
+  departmentVisitedTag?: Tag
+  productPurchasedTag?: Tag
   /** List of IDs of last products visited */
-  productVisitedTag?: string
+  productVisitedTag?: Tag
   /** State registration of Company */
   stateRegistration?: string
   /** Email address of customer */
@@ -53,9 +70,9 @@ export interface User {
   /** Registered phone of the company. */
   businessPhone?: string
   /** List of IDs of last SKUs in the cart */
-  cartTag?: string
+  cartTag?: Tag
   /** List of Checkout steps completed by the customer */
-  checkoutTag?: string
+  checkoutTag?: Tag
   /** CNPJ number */
   corporateDocument?: string
   /** Company name */
@@ -65,7 +82,7 @@ export interface User {
   /** Gender of customer */
   gender?: string
   /** List of IDs of last unavailable products visited */
-  visitedProductWithStockOutSkusTag?: string
+  visitedProductWithStockOutSkusTag?: Tag
   customerClass?: string
   priceTables?: string
   id: ID
