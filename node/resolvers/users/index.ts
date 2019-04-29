@@ -6,11 +6,12 @@ export const queries = {
     const {
       clients: { users },
     } = ctx
+
     return users.getUsers(filter, perPage, pageNumber)
   },
 }
 
-export const fieldResolvers = {
+export const userResolvers = {
   User: {
     rcLastCart: prop('rclastcast'),
     rcLastCartValue: prop('rclastcartvalue'),
@@ -19,29 +20,31 @@ export const fieldResolvers = {
     cartTag: prop('carttag'),
     checkoutTag: prop('checkouttag'),
     autoFilter: prop('auto_filter'),
-    productPurchasedTag: (user: any, _:any, ctx: Context) => {
-      const { productPurchasedTag  } = user
-      console.log(">>>>>>>>ctx", ctx)
-      console.log(">>>>>>>>>>>>>>>>>", user)
-      console.log(">>>>>>>>>>>>>>>>>", prop('productPurchasedTag') )
-      const scores = forEachObjIndexed((v, k) => {
+  },
+}
+
+export const tagResolvers = {
+  Tag: {
+    displayValue: prop('DisplayValue'),
+    scores: (score: any, _: any) => {
+      const { Scores } = score
+      const scores : any[] = []
+      forEachObjIndexed((v, k) => {
         const obj = {
-          name: v,
+          name: k,
           registers: map(item => {
             return {
               point: prop('Point', item),
               date: prop('Date', item),
               until: prop('Until', item)
             }
-          }, k),
+          }, v),
         }
-        return obj
-      }, prop('Scores', productPurchasedTag))
-
-      return {
-        displayValue : prop('DisplayValue', productPurchasedTag),
-        scores: scores
-      }
+        scores.push(obj)
+      }, Scores)
+      return scores
     },
   },
 }
+
+

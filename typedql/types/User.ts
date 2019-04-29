@@ -3,15 +3,15 @@ import { ID, Int } from './scalars'
 
 export interface Tag {
   displayValue?: string
-  scores?: TagElement
-}
-
-export interface TagElement {
-  name?: string
-  registers?: Score[]
+  scores?: Score[]
 }
 
 export interface Score {
+  name?: string
+  registers?: Register[]
+}
+
+export interface Register {
   point?: Int
   date?: string
   until?: string

@@ -8,7 +8,7 @@ class UserDataSource extends IODataSource {
 
   public getUsers = (filter: string, perPage: Int, pageNumber: Int) =>
     this.http.get(
-      `${DATA_ENTITY}/search?_fields=all${filter ? `&${filter}` : ''}`,
+      `${DATA_ENTITY}/search?_fields=_all${filter ? `&${filter}` : ''}`,
       {
         metric: 'crm-get-users',
         headers: {

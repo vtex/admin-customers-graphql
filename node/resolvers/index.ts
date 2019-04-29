@@ -3,13 +3,18 @@ import {
   propertiesFieldResolvers,
   queries as schemasQueries,
 } from './schemas'
-import { fieldResolvers as usersResolvers, queries as usersQueries} from './users'
+import {
+  userResolvers as usersResolvers,
+  tagResolvers,
+  queries as usersQueries,
+} from './users'
 import { mutations as documentMutations } from './documents'
 
 export const resolvers = {
   ...schemasResolvers,
   ...propertiesFieldResolvers,
   ...usersResolvers,
+  ...tagResolvers,
   Query: {
     ...schemasQueries,
     ...usersQueries,
