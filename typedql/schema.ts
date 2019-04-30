@@ -12,27 +12,33 @@ export interface Query {
   /**
    * Get schema of CRM
    */
+  /** @graphql Directives
+   *  @cacheControl(scope: PRIVATE)
+   */
   getSchema: SchemaResponse
 
   /**
    * Get Users of CRM
-   * @param filter Filter for help in query. You should use the sql sintax. 
+   * @param filter Filter for help in query. You should use the sql sintax.
    * @param perPage Number of items by page.
    * @param pageNumber The page number
    */
-  getUsers(filter: string, perPage: Int, pageNumber:Int): User[]
-
-}
-
-export interface Mutation {
   /** @graphql Directives
    *  @cacheControl(scope: PRIVATE)
    */
 
+  getUsers(filter: string, perPage: Int, pageNumber: Int): User[]
+}
+
+export interface Mutation {
   /**
    * Save given document.
    *
    * @param document Document to be saved.
+   */
+
+  /** @graphql Directives
+   *  @cacheControl(scope: PRIVATE)
    */
   saveDocument(document: DocumentInput): DocumentPOSTResponse
 
@@ -41,12 +47,20 @@ export interface Mutation {
    *
    * @param document Document to be updated.
    */
+
+  /** @graphql Directives
+   *  @cacheControl(scope: PRIVATE)
+   */
   updateDocument(document: DocumentInput): Document
 
   /**
    * Deletes the document with the given ID.
    *
    * @param document Document to be deleted.
+   */
+
+  /** @graphql Directives
+   *  @cacheControl(scope: PRIVATE)
    */
   deleteDocument(id: ID): CacheableDocument
 }
