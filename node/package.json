@@ -15,7 +15,7 @@
     "@types/koa": "^2.0.46",
     "@types/node": "^7.10.5",
     "@types/ramda": "types/npm-ramda#dist",
-    "@vtex/api": "3.4.0",
+    "@vtex/api": "3.5.1",
     "eslint": "^5.16.0",
     "eslint-config-vtex": "^10.1.0",
     "prettier": "^1.17.0",

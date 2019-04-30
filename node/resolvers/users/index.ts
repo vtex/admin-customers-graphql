@@ -1,13 +1,17 @@
 import { prop, forEachObjIndexed, map } from 'ramda'
+import { AuthenticationError } from '@vtex/api'
 
 export const queries = {
   getUsers: (_: any, args: any, ctx: Context) => {
     const { filter, perPage, pageNumber } = args
     const {
       clients: { users },
+      cookies,
     } = ctx
+    const vtexIdToken = cookies.get('VtexIdclientAutCookie')
+    if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
-    return users.getUsers(filter, perPage, pageNumber)
+    return users.get(filter, perPage, pageNumber, vtexIdToken)
   },
 }
 
@@ -28,7 +32,7 @@ export const tagResolvers = {
     displayValue: prop('DisplayValue'),
     scores: (score: any, _: any) => {
       const { Scores } = score
-      const scores : any[] = []
+      const scores: any[] = []
       forEachObjIndexed((v, k) => {
         const obj = {
           name: k,
@@ -36,7 +40,7 @@ export const tagResolvers = {
             return {
               point: prop('Point', item),
               date: prop('Date', item),
-              until: prop('Until', item)
+              until: prop('Until', item),
             }
           }, v),
         }
@@ -46,5 +50,3 @@ export const tagResolvers = {
     },
   },
 }
-
-

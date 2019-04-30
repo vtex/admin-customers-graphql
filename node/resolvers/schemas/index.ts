@@ -1,12 +1,16 @@
 import { prop } from 'ramda'
+import { AuthenticationError } from '@vtex/api'
 
 export const queries = {
   getSchema: (_: any, __: any, ctx: Context) => {
     const {
       clients: { schemas },
+      cookies,
     } = ctx
+    const vtexIdToken = cookies.get('VtexIdclientAutCookie')
+    if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
-    return schemas.getSchema()
+    return schemas.get(vtexIdToken)
   },
 }
 
