@@ -7,9 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Authentication on all request
+
 ## [0.6.0] - 2019-04-29
-### Added 
- - Add `getUsers` query. 
+
+### Added
+
+- Add `getUsers` query.
 
 ## [0.5.0] - 2019-04-25
 
