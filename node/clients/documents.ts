@@ -5,6 +5,7 @@ import { Document, DocumentPOSTResponse } from '../../typedql/types/Document'
 import { DATA_ENTITY } from '../utils/constants'
 import { mapKeyValues } from '../utils'
 import forProfile from './client'
+import { withAuthToken } from '../resolvers/headers'
 
 interface RawDocumentPOSTResponse {
   Id: string
@@ -49,10 +50,7 @@ class DocumentsDataSource extends IODataSource {
         `${DATA_ENTITY}/documents/${id}`,
         {
           metric: 'crm-get-document',
-          headers: {
-            VtexIdClientAutCookie: vtexIdToken,
-            'X-Vtex-Use-Https': 'true',
-          },
+          headers: withAuthToken()(vtexIdToken),
         }
       )
     )
@@ -67,10 +65,7 @@ class DocumentsDataSource extends IODataSource {
         document,
         {
           metric: 'crm-create-document',
-          headers: {
-            VtexIdClientAutCookie: vtexIdToken,
-            'X-Vtex-Use-Https': 'true',
-          },
+          headers: withAuthToken()(vtexIdToken),
         }
       )
     )
@@ -92,10 +87,7 @@ class DocumentsDataSource extends IODataSource {
     this.http
       .delete(`${DATA_ENTITY}/documents/${id}`, {
         metric: 'crm-delete-document',
-        headers: {
-          VtexIdClientAutCookie: vtexIdToken,
-          'X-Vtex-Use-Https': 'true',
-        },
+        headers: withAuthToken()(vtexIdToken),
       })
       .then(prop('data'))
 }
