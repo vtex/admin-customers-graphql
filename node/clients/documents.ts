@@ -43,36 +43,59 @@ const factory = forProfile
 class DocumentsDataSource extends IODataSource {
   protected httpClientFactory = factory
 
-  public get = async (id: string): Promise<Document> =>
+  public get = async (id: string, vtexIdToken: string): Promise<Document> =>
     parseDocumentGETResponse(
       await this.http.get<RawDocumentGETResponse>(
         `${DATA_ENTITY}/documents/${id}`,
         {
           metric: 'crm-get-document',
+          headers: {
+            VtexIdClientAutCookie: vtexIdToken,
+            'X-Vtex-Use-Https': 'true',
+          },
         }
       )
     )
 
-  public save = async (document: any): Promise<DocumentPOSTResponse> =>
+  public save = async (
+    document: any,
+    vtexIdToken: string
+  ): Promise<DocumentPOSTResponse> =>
     parseDocumentPOSTResponse(
       await this.http.post<RawDocumentPOSTResponse>(
         `${DATA_ENTITY}/documents`,
         document,
         {
           metric: 'crm-create-document',
+          headers: {
+            VtexIdClientAutCookie: vtexIdToken,
+            'X-Vtex-Use-Https': 'true',
+          },
         }
       )
     )
 
-  public update = (document: any, key?: string): Promise<void> =>
+  public update = (
+    vtexIdToken: string,
+    document: any,
+    key?: string
+  ): Promise<void> =>
     this.http.patch(`${DATA_ENTITY}/documents/${key || ''}`, document, {
       metric: 'crm-update-document',
+      headers: {
+        VtexIdClientAutCookie: vtexIdToken,
+        'X-Vtex-Use-Https': 'true',
+      },
     })
 
-  public delete = (id: string): Promise<void> =>
+  public delete = (id: string, vtexIdToken: string): Promise<void> =>
     this.http
       .delete(`${DATA_ENTITY}/documents/${id}`, {
         metric: 'crm-delete-document',
+        headers: {
+          VtexIdClientAutCookie: vtexIdToken,
+          'X-Vtex-Use-Https': 'true',
+        },
       })
       .then(prop('data'))
 }

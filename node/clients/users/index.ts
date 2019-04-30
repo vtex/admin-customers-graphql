@@ -6,7 +6,12 @@ import { Int } from '../../../typedql/types/scalars'
 class UserDataSource extends IODataSource {
   protected httpClientFactory = factory
 
-  public getUsers = (filter: string, perPage: Int, pageNumber: Int) =>
+  public get = (
+    filter: string,
+    perPage: Int,
+    pageNumber: Int,
+    vtexIdToken: string
+  ) =>
     this.http.get(
       `${DATA_ENTITY}/search?_fields=_all${filter ? `&${filter}` : ''}`,
       {
@@ -14,6 +19,8 @@ class UserDataSource extends IODataSource {
         headers: {
           'REST-Range': `resources=${perPage * pageNumber}-${perPage *
             (pageNumber + 1)} `,
+          VtexIdClientAutCookie: vtexIdToken,
+          'X-Vtex-Use-Https': 'true',
         },
       }
     )

@@ -6,9 +6,13 @@ import factory from '../client'
 class SchemaDataSource extends IODataSource {
   protected httpClientFactory = factory
 
-  public getSchema = () =>
-    this.http.get(`${DATA_ENTITY}/schemas/${SCHEMA_NAME}`, {
+  public get = (vtexIdToken: string) =>
+    this.http.get(`${ DATA_ENTITY}/schemas/${SCHEMA_NAME}`, {
       metric: 'crm-get-schema',
+      headers: {
+        VtexIdClientAutCookie: vtexIdToken,
+        'X-Vtex-Use-Https': 'true',
+      },
     })
 }
 
