@@ -23,9 +23,7 @@ export const fieldResolvers = {
     customFields: ({ properties }: any) => {
       const customFields = difference(Object.keys(properties), defaultFields)
       return reduce(
-        (acc, field) => {
-          return acc.concat({ key: field, value: properties[field] })
-        },
+        (acc, field) => acc.concat({ key: field, value: properties[field] }),
         [] as any,
         customFields
       )
