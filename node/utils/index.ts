@@ -30,3 +30,26 @@ export const mapKeyValues = (document: any) =>
     key,
     value: document[key],
   }))
+
+export const defaultFields = [
+  'id',
+  'email',
+  'gender',
+  'userId',
+  'lastName',
+  'document',
+  'firstName',
+  'birthDate',
+  'tradeName',
+  'rclastcart',
+  'documentType',
+  'rclastsession',
+  'corporateName',
+  'customerClass',
+  'businessPhone',
+  'localeDefault',
+  'rclastcartvalue',
+  'isNewsletterOptIn',
+  'rclastsessionsate',
+  'stateRegistration',
+]

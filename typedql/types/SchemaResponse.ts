@@ -9,27 +9,16 @@ export interface Property {
 
 export interface Properties {
   id: Property
-  tags: Property
   email: Property
   gender: Property
   userId: Property
-  approved: Property
   lastName: Property
   document: Property
-  updatedIn: Property
-  followers: Property
-  createdIn: Property
   firstName: Property
   birthDate: Property
   accountId: Property
-  tradeName: Property
-  autoFilter: Property
   rcLastCart: Property
-  isCorporate: Property
-  accountName: Property
-  priceTables: Property
   documentType: Property
-  dataEntityId: Property
   rcLastSession: Property
   corporateName: Property
   customerClass: Property
@@ -37,26 +26,24 @@ export interface Properties {
   localeDefault: Property
   rcLastCartValue: Property
   isNewsletterOptIn: Property
-  lastInteractionIn: Property
   rcLastSessionDate: Property
-  corporateDocument: Property
   stateRegistration: Property
 }
 
-/**
- * Schema of CRM
- */
+/** CRM Schema*/
 export interface SchemaResponse {
-  /**
-   * Properties of schema
-   */
+  /** Properties of Schema */
   properties: Properties
-  /**
-   * Required fields of schema
-   */
+  /** Required fields of Schema */
   required: string[]
-  /**
-   * Indexed fields of schema
-   */
+  /** Indexed fields of Schema */
   vIndexed: string[]
+  /** Custom fields created by the user */
+  customFields?: CustomField[]
+}
+
+/** Custom field in a key/value format */
+export interface CustomField {
+  key: string
+  value: Property
 }
