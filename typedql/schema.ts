@@ -10,16 +10,17 @@ import { User } from './types/User'
 
 export interface Query {
   /**
-   * Get schema of CRM
+   * Schema of CRM
    */
-
-  /** @graphql Directives
-   *  @cacheControl(scope: PRIVATE)
-   */
-  getSchema: SchemaResponse
 
   /**
-   * Get Users of CRM
+   * @graphql Directives
+   * @cacheControl(scope: PRIVATE)
+   */
+  schema: SchemaResponse
+
+  /**
+   * Users of CRM
    * @param filter Filter for help in query. You should use the sql sintax.
    * @param perPage Number of items by page.
    * @param pageNumber The page number
@@ -28,7 +29,17 @@ export interface Query {
   /** @graphql Directives
    *  @cacheControl(scope: PRIVATE)
    */
-  getUsers(filter: string, perPage: Int, pageNumber: Int): User[]
+  users(filter: string, perPage: Int, pageNumber: Int): User[]
+
+  /**
+   * Total number of Users of CRM
+   */
+
+  /**
+   * @graphql Directives
+   * @cacheControl(scope: PRIVATE)
+   */
+  totalNumberOfUsers(): Int
 }
 
 export interface Mutation {
