@@ -13,6 +13,16 @@ export const queries = {
 
     return users.get(filter, perPage, pageNumber, vtexIdToken)
   },
+  getNumberUsers: (_: any, __: any, ctx: Context) => {
+    const {
+      clients: { users },
+      cookies,
+    } = ctx
+    const vtexIdToken = cookies.get('VtexIdclientAutCookie')
+    if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
+
+    return users.getNumber(vtexIdToken)
+  },
 }
 
 export const userResolvers = {

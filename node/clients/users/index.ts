@@ -23,6 +23,16 @@ class UserDataSource extends IODataSource {
         })(vtexIdToken),
       }
     )
+
+  public getNumber = async (vtexIdToken: string) => {
+    const res = await this.http.getRaw(`${DATA_ENTITY}/search`, {
+      metric: 'crm-get-users',
+      headers: withAuthToken({ 'REST-Range': 'resources=1-1' })(vtexIdToken),
+    })
+
+    const contentRange = res.headers['rest-content-range']
+    return parseInt(contentRange.split('/')[1])
+  }
 }
 
 export default UserDataSource

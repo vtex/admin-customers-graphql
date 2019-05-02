@@ -29,6 +29,12 @@ export interface Query {
    *  @cacheControl(scope: PRIVATE)
    */
   getUsers(filter: string, perPage: Int, pageNumber: Int): User[]
+
+  /**
+   * @graphql Directives
+   * @cacheControl(scope: PRIVATE)
+   */
+  getNumberUsers(): Int
 }
 
 export interface Mutation {
