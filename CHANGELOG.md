@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Add `getNumberUsers` query.
+- Add `totalNumberOfUsers` query.
+- Rename queries removing `get` from them.
 
 ## [0.6.1] - 2019-04-30
 

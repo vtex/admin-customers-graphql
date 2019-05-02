@@ -24,7 +24,7 @@ class UserDataSource extends IODataSource {
       }
     )
 
-  public getNumber = async (vtexIdToken: string) => {
+  public getTotalNumber = async (vtexIdToken: string) => {
     const res = await this.http.getRaw(`${DATA_ENTITY}/search`, {
       metric: 'crm-get-users',
       headers: withAuthToken({ 'REST-Range': 'resources=1-1' })(vtexIdToken),

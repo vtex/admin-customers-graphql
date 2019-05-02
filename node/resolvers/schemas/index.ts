@@ -2,7 +2,7 @@ import { prop } from 'ramda'
 import { AuthenticationError } from '@vtex/api'
 
 export const queries = {
-  getSchema: (_: any, __: any, ctx: Context) => {
+  schema: (_: any, __: any, ctx: Context) => {
     const {
       clients: { schemas },
       cookies,
