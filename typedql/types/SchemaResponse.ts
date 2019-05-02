@@ -12,21 +12,13 @@ export interface Properties {
   email: Property
   gender: Property
   userId: Property
-  approved: Property
   lastName: Property
-  isPJ: Property
-  homePhone: Property
-  nickname: Property
-  fancyName: Property
   document: Property
-  followers: Property
   createdIn: Property
   firstName: Property
   birthDate: Property
   accountId: Property
-  tradeName: Property
   rcLastCart: Property
-  isCorporate: Property
   documentType: Property
   rcLastSession: Property
   corporateName: Property
