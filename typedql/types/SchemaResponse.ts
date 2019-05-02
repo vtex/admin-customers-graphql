@@ -14,7 +14,6 @@ export interface Properties {
   userId: Property
   lastName: Property
   document: Property
-  createdIn: Property
   firstName: Property
   birthDate: Property
   accountId: Property

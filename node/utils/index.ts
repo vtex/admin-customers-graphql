@@ -38,7 +38,6 @@ export const defaultFields = [
   'userId',
   'lastName',
   'document',
-  'createdIn',
   'firstName',
   'birthDate',
   'tradeName',
