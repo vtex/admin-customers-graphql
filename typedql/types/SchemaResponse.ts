@@ -27,7 +27,6 @@ export interface Properties {
   tradeName: Property
   rcLastCart: Property
   isCorporate: Property
-  accountName: Property
   documentType: Property
   rcLastSession: Property
   corporateName: Property
@@ -40,25 +39,19 @@ export interface Properties {
   stateRegistration: Property
 }
 
-/**
- * Schema of CRM
- */
+/** CRM Schema*/
 export interface SchemaResponse {
-  /**
-   * Properties of schema
-   */
+  /** Properties of Schema */
   properties: Properties
-  /**
-   * Required fields of schema
-   */
+  /** Required fields of Schema */
   required: string[]
-  /**
-   * Indexed fields of schema
-   */
+  /** Indexed fields of Schema */
   vIndexed: string[]
+  /** Custom fields created by the user */
   customFields?: CustomField[]
 }
 
+/** Custom field in a key/value format */
 export interface CustomField {
   key: string
   value: Property
