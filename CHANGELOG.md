@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Support for custom fields in `getSchema` Query.
+
 ## [0.7.0] - 2019-05-02
 
 ### Added
