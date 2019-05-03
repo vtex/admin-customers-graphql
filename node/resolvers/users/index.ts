@@ -2,7 +2,7 @@ import { prop, forEachObjIndexed, map } from 'ramda'
 import { AuthenticationError } from '@vtex/api'
 
 export const queries = {
-  users: (_: any, args: any, ctx: Context) => {
+  users: (_: any, args: UsersArgs, ctx: Context) => {
     const { filter, perPage, pageNumber } = args
     const {
       clients: { users },
@@ -13,7 +13,8 @@ export const queries = {
 
     return users.get(filter, perPage, pageNumber, vtexIdToken)
   },
-  totalNumberOfUsers: (_: any, __: any, ctx: Context) => {
+  totalNumberOfUsers: (_: any, args: { filter: string }, ctx: Context) => {
+    const { filter } = args
     const {
       clients: { users },
       cookies,
@@ -21,7 +22,7 @@ export const queries = {
     const vtexIdToken = cookies.get('VtexIdclientAutCookie')
     if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
-    return users.getTotalNumber(vtexIdToken)
+    return users.getTotalNumber(filter, vtexIdToken)
   },
 }
 
