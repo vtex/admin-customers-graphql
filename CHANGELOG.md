@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.0] - 2019-05-03
+
+### Added
+
+- Add `filter` variable in `totalNumberOfUsers` query.
+
 ## [0.7.2] - 2019-05-03
 
 ### Changed
@@ -28,7 +34,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.6.1] - 2019-04-30
 
-### Fixed
+### Changed
 
 - Authentication on all request
 

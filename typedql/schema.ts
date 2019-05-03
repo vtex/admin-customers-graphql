@@ -33,13 +33,14 @@ export interface Query {
 
   /**
    * Total number of Users of CRM
+   * @param filter Filter for help in query. You should use the sql sintax.
    */
 
   /**
    * @graphql Directives
    * @cacheControl(scope: PRIVATE)
    */
-  totalNumberOfUsers(): Int
+  totalNumberOfUsers(filter: string): Int
 }
 
 export interface Mutation {
