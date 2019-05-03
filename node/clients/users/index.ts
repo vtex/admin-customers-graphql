@@ -12,17 +12,20 @@ class UserDataSource extends IODataSource {
     perPage: Int,
     pageNumber: Int,
     vtexIdToken: string
-  ) =>
-    this.http.get(
+  ) => {
+    const from = perPage * pageNumber
+    const to = perPage * (pageNumber + 1) - 1
+
+    return this.http.get(
       `${DATA_ENTITY}/search?_fields=_all${filter ? `&${filter}` : ''}`,
       {
         metric: 'crm-get-users',
         headers: withAuthToken({
-          'REST-Range': `resources=${perPage * pageNumber}-${perPage *
-            (pageNumber + 1)} `,
+          'REST-Range': `resources=${from}-${to} `,
         })(vtexIdToken),
       }
     )
+  }
 
   public getTotalNumber = async (vtexIdToken: string) => {
     const res = await this.http.getRaw(`${DATA_ENTITY}/search`, {
