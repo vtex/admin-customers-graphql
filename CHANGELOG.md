@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.1] - 2019-05-07
+
+### Changed
+
+- Fix pagination error in `user.get`.
+
 ## [0.8.0] - 2019-05-03
 
 ### Added

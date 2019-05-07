@@ -14,7 +14,8 @@ class UserDataSource extends IODataSource {
     vtexIdToken: string
   ) => {
     const from = perPage * pageNumber
-    const to = perPage * (pageNumber + 1) - 1
+    // not inclusive
+    const to = perPage * (pageNumber + 1)
 
     return this.http.get(
       `${DATA_ENTITY}/search?_fields=_all${filter ? `&${filter}` : ''}`,
