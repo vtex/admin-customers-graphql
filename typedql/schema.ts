@@ -29,7 +29,7 @@ export interface Query {
   /** @graphql Directives
    *  @cacheControl(scope: PRIVATE)
    */
-  users(filter: string, perPage: Int, pageNumber: Int): User[]
+  users(perPage: Int, pageNumber: Int, filter?: string): User[]
 
   /**
    * Total number of Users of CRM
@@ -40,7 +40,7 @@ export interface Query {
    * @graphql Directives
    * @cacheControl(scope: PRIVATE)
    */
-  totalNumberOfUsers(filter: string): Int
+  totalNumberOfUsers(filter?: string): Int
 }
 
 export interface Mutation {
