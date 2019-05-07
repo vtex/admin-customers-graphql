@@ -5,7 +5,6 @@ import {
 } from './schemas'
 import {
   userResolvers as usersResolvers,
-  tagResolvers,
   queries as usersQueries,
 } from './users'
 import { mutations as documentMutations } from './documents'
@@ -14,7 +13,6 @@ export const resolvers = {
   ...schemasResolvers,
   ...propertiesFieldResolvers,
   ...usersResolvers,
-  ...tagResolvers,
   Query: {
     ...schemasQueries,
     ...usersQueries,
