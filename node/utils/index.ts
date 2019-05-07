@@ -50,4 +50,8 @@ export const defaultFields = [
   'documentType',
   'corporateDocument',
   'isNewsletterOptIn',
+  'rclastcart',
+  'rclastsession',
+  'rclastcartvalue',
+  'rclastsessiondate',
 ]
