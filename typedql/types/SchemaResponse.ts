@@ -9,25 +9,27 @@ export interface Property {
 
 export interface Properties {
   id: Property
-  email: Property
-  gender: Property
-  userId: Property
-  lastName: Property
-  document: Property
   firstName: Property
+  lastName: Property
+  email: Property
+  document: Property
+  userId: Property
   birthDate: Property
-  accountId: Property
-  rcLastCart: Property
-  documentType: Property
-  rcLastSession: Property
-  corporateName: Property
-  customerClass: Property
+  phone: Property
   businessPhone: Property
-  localeDefault: Property
-  rcLastCartValue: Property
-  isNewsletterOptIn: Property
-  rcLastSessionDate: Property
+  tradeName: Property
+  corporateName: Property
+  isCorporate: Property
+  gender: Property
+  homePhone: Property
   stateRegistration: Property
+  documentType: Property
+  corporateDocument: Property
+  isNewsletterOptIn: Property
+  rcLastCart: Property
+  rcLastSession: Property
+  rcLastCartValue: Property
+  rcLastSessionDate: Property
 }
 
 /** CRM Schema*/
