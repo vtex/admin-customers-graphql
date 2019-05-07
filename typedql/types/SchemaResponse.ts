@@ -15,13 +15,13 @@ export interface Properties {
   document: Property
   userId: Property
   birthDate: Property
-  phone: Property
+  phone?: Property
   businessPhone: Property
   tradeName: Property
   corporateName: Property
   isCorporate: Property
   gender: Property
-  homePhone: Property
+  homePhone?: Property
   stateRegistration: Property
   documentType: Property
   corporateDocument: Property
