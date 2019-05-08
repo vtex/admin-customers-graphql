@@ -3,7 +3,7 @@ import { prop } from 'ramda'
 import { Document, DocumentPOSTResponse } from '../../typedql/types/Document'
 import { DATA_ENTITY } from '../utils/constants'
 import { mapKeyValues } from '../utils'
-import { withAuthToken } from '../resolvers/headers'
+import { withAuthToken } from './headers'
 
 interface RawDocumentPOSTResponse {
   Id: string
