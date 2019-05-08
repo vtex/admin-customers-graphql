@@ -1,4 +1,4 @@
-import { prop, forEachObjIndexed, map } from 'ramda'
+import { prop } from 'ramda'
 import { AuthenticationError } from '@vtex/api'
 
 export const queries = {
@@ -32,32 +32,5 @@ export const userResolvers = {
     rcLastCartValue: prop('rclastcartvalue'),
     rcLastSession: prop('rclastsession'),
     rcLastSessionDate: prop('rclastsessiondate'),
-    cartTag: prop('carttag'),
-    checkoutTag: prop('checkouttag'),
-    autoFilter: prop('auto_filter'),
-  },
-}
-
-export const tagResolvers = {
-  Tag: {
-    displayValue: prop('DisplayValue'),
-    scores: (score: any, _: any) => {
-      const { Scores } = score
-      const scores: any[] = []
-      forEachObjIndexed((v, k) => {
-        const obj = {
-          name: k,
-          registers: map(item => {
-            return {
-              point: prop('Point', item),
-              date: prop('Date', item),
-              until: prop('Until', item),
-            }
-          }, v),
-        }
-        scores.push(obj)
-      }, Scores)
-      return scores
-    },
   },
 }
