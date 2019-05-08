@@ -9,9 +9,7 @@
     "typedql": "0.x",
     "node": "4.x"
   },
-  "registries": [
-    "smartcheckout"
-  ],
+  "registries": ["smartcheckout"],
   "scripts": {
     "postreleasy": "vtex publish --public"
   },
@@ -20,8 +18,8 @@
     {
       "name": "outbound-access",
       "attrs": {
-        "host": "{{account}}.vtexcommercestable.com.br",
-        "path": "/api/dataentities/*"
+        "host": "portal.vtexcommercestable.com.br",
+        "path": "/api/*"
       }
     }
   ]

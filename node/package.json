@@ -6,7 +6,6 @@
   "author": "Ana Luiza",
   "license": "ISC",
   "dependencies": {
-    "apollo-datasource-rest": "^0.3.2",
     "cookie": "^0.3.1",
     "ramda": "^0.26.1"
   },
@@ -15,7 +14,7 @@
     "@types/koa": "^2.0.46",
     "@types/node": "^7.10.5",
     "@types/ramda": "types/npm-ramda#dist",
-    "@vtex/api": "3.5.1",
+    "@vtex/api": "3.8.1",
     "eslint": "^5.16.0",
     "eslint-config-vtex": "^10.1.0",
     "prettier": "^1.17.0",

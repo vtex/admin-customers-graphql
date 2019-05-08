@@ -250,10 +250,10 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-"@vtex/api@3.5.1":
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-3.5.1.tgz#8d2fe515d7a50d8d0b1d850aa8a694855e63adf4"
-  integrity sha512-AibMNXh0xr7BNquGbQd4msDAiWUVODKnVcTOaFjhMQIc1sTodwQ+K64iQPa7u9vpa7EMaG4RXp6LM6QZAB61SA==
+"@vtex/api@3.8.1":
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-3.8.1.tgz#968eb07e3831955ca4b36b46806f2a0b4565d712"
+  integrity sha512-QIRc9aWVIMnMGSzrasqzXPD/blPd8aBMqJx7TdM7XPnVNfGSSLeLpzV0GAln5UQdnFoWMYmTSdl6nVoSMKbvYA==
   dependencies:
     "@types/koa" "^2.0.48"
     "@types/koa-compose" "^3.2.3"
@@ -332,17 +332,6 @@ apollo-cache-control@0.5.2:
   dependencies:
     apollo-server-env "2.2.0"
     graphql-extensions "0.5.4"
-
-apollo-datasource-rest@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/apollo-datasource-rest/-/apollo-datasource-rest-0.3.2.tgz#2f9dcc6531a7258535007894717d3806ecc32c7f"
-  integrity sha512-56Mt4VTlzeqHr+NPAkIi9KQYBhuOnn1PGrIg9X/nQ2gjY/sujiXiS1EmFo7vLbdO5NBNhfqvPXffgWWzZI1asQ==
-  dependencies:
-    apollo-datasource "0.3.1"
-    apollo-server-caching "0.3.1"
-    apollo-server-env "2.2.0"
-    apollo-server-errors "2.2.1"
-    http-cache-semantics "^4.0.0"
 
 apollo-datasource@0.3.1, apollo-datasource@^0.3.1:
   version "0.3.1"
@@ -1172,11 +1161,6 @@ has@^1.0.1, has@^1.0.3:
   integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   dependencies:
     function-bind "^1.1.1"
-
-http-cache-semantics@^4.0.0:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/http-cache-semantics/-/http-cache-semantics-4.0.3.tgz#495704773277eeef6e43f9ab2c2c7d259dda25c5"
-  integrity sha512-TcIMG3qeVLgDr1TEd2XvHaTnMPwYQUQMIBLy+5pLSDKYFc7UIqj39w8EGzZkaxoLv/l2K8HaI0t5AVA+YYgUew==
 
 http-errors@1.7.2, http-errors@^1.7.2:
   version "1.7.2"
