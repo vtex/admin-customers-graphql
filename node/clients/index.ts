@@ -1,7 +1,7 @@
 import { AuthType, ClientsConfig, IOClients, LRUCache } from '@vtex/api'
 import Schemas from './schemas'
 import Documents from './documents'
-import Users from './users/index'
+import Users from './users'
 import { forEachObjIndexed } from 'ramda'
 
 const memoryCache = {
