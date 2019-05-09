@@ -1,11 +1,9 @@
-import { IODataSource } from '@vtex/api'
+import { JanusClient } from '@vtex/api'
 import { prop } from 'ramda'
-
 import { Document, DocumentPOSTResponse } from '../../typedql/types/Document'
 import { DATA_ENTITY } from '../utils/constants'
 import { mapKeyValues } from '../utils'
-import forProfile from './client'
-import { withAuthToken } from '../resolvers/headers'
+import { withAuthToken } from './headers'
 
 interface RawDocumentPOSTResponse {
   Id: string
@@ -38,16 +36,12 @@ const parseDocumentGETResponse = ({
   id,
 })
 
-const factory = forProfile
-
 // https://documenter.getpostman.com/view/164907/master-data-api-v2-beta/7EHbXTe#4dd0c083-527d-13de-c30a-b26d5cd68c56
-class DocumentsDataSource extends IODataSource {
-  protected httpClientFactory = factory
-
+class Documents extends JanusClient {
   public get = async (id: string, vtexIdToken: string): Promise<Document> =>
     parseDocumentGETResponse(
       await this.http.get<RawDocumentGETResponse>(
-        `${DATA_ENTITY}/documents/${id}`,
+        `api/dataentities/${DATA_ENTITY}/documents/${id}`,
         {
           metric: 'crm-get-document',
           headers: withAuthToken()(vtexIdToken),
@@ -61,7 +55,7 @@ class DocumentsDataSource extends IODataSource {
   ): Promise<DocumentPOSTResponse> =>
     parseDocumentPOSTResponse(
       await this.http.post<RawDocumentPOSTResponse>(
-        `${DATA_ENTITY}/documents`,
+        `api/dataentities/${DATA_ENTITY}/documents`,
         document,
         {
           metric: 'crm-create-document',
@@ -75,21 +69,22 @@ class DocumentsDataSource extends IODataSource {
     document: any,
     key?: string
   ): Promise<void> =>
-    this.http.patch(`${DATA_ENTITY}/documents/${key || ''}`, document, {
-      metric: 'crm-update-document',
-      headers: {
-        VtexIdClientAutCookie: vtexIdToken,
-        'X-Vtex-Use-Https': 'true',
-      },
-    })
+    this.http.patch(
+      `api/dataentities/${DATA_ENTITY}/documents/${key || ''}`,
+      document,
+      {
+        metric: 'crm-update-document',
+        headers: withAuthToken()(vtexIdToken),
+      }
+    )
 
   public delete = (id: string, vtexIdToken: string): Promise<void> =>
     this.http
-      .delete(`${DATA_ENTITY}/documents/${id}`, {
+      .delete(`api/dataentities/${DATA_ENTITY}/documents/${id}`, {
         metric: 'crm-delete-document',
         headers: withAuthToken()(vtexIdToken),
       })
       .then(prop('data'))
 }
 
-export default DocumentsDataSource
+export default Documents

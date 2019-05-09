@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "admin-customers-graphql",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "title": "CRM GraphQL",
   "description": "GraphQL API for Customer Relationship Management",
   "dependencies": {},
@@ -20,8 +20,8 @@
     {
       "name": "outbound-access",
       "attrs": {
-        "host": "{{account}}.vtexcommercestable.com.br",
-        "path": "/api/dataentities/*"
+        "host": "portal.vtexcommercestable.com.br",
+        "path": "/api/*"
       }
     }
   ]

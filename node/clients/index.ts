@@ -1,13 +1,13 @@
 import { AuthType, ClientsConfig, IOClients, LRUCache } from '@vtex/api'
-import SchemaDataSource from './schemas'
-import DocumentsDataSource from './documents'
+import Schemas from './schemas'
+import Documents from './documents'
+import Users from './users'
 import { forEachObjIndexed } from 'ramda'
-import UserDataSource from './users/index'
 
 const memoryCache = {
   documents: new LRUCache<string, any>({ max: 4000 }),
   schema: new LRUCache<string, any>({ max: 4000 }),
-  users: new LRUCache<string, any>({max : 4000})
+  users: new LRUCache<string, any>({ max: 4000 }),
 }
 
 forEachObjIndexed((cacheInstance: LRUCache<string, any>, cacheName: string) => {
@@ -15,14 +15,14 @@ forEachObjIndexed((cacheInstance: LRUCache<string, any>, cacheName: string) => {
 }, memoryCache)
 
 export class Clients extends IOClients {
-  public get schemas(): SchemaDataSource {
-    return this.getOrSet('schemas', SchemaDataSource)
+  public get schemas() {
+    return this.getOrSet('schemas', Schemas)
   }
-  public get documents(): DocumentsDataSource {
-    return this.getOrSet('documents', DocumentsDataSource)
+  public get documents() {
+    return this.getOrSet('documents', Documents)
   }
-  public get users(): UserDataSource {
-    return this.getOrSet('users', UserDataSource)
+  public get users() {
+    return this.getOrSet('users', Users)
   }
 }
 
@@ -42,8 +42,8 @@ export const clients: ClientsConfig<Clients> = {
       memoryCache: memoryCache.documents,
     },
     users: {
-      authType: AuthType.bearer, 
+      authType: AuthType.bearer,
       memoryCache: memoryCache.users,
-    }
+    },
   },
 }
