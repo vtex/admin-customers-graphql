@@ -1,4 +1,4 @@
-import { JanusClient } from '@vtex/api'
+import { JanusClient, ResolverError } from '@vtex/api'
 import { prop } from 'ramda'
 import { Document, DocumentPOSTResponse } from '../../typedql/types/Document'
 import { DATA_ENTITY } from '../utils/constants'
@@ -52,17 +52,34 @@ class Documents extends JanusClient {
   public save = async (
     document: any,
     vtexIdToken: string
-  ): Promise<DocumentPOSTResponse> =>
-    parseDocumentPOSTResponse(
-      await this.http.post<RawDocumentPOSTResponse>(
-        `api/dataentities/${DATA_ENTITY}/documents`,
-        document,
-        {
-          metric: 'crm-create-document',
-          headers: withAuthToken()(vtexIdToken),
-        }
+  ): Promise<DocumentPOSTResponse> => {
+    try {
+      return parseDocumentPOSTResponse(
+        await this.http.post<RawDocumentPOSTResponse>(
+          `api/dataentities/${DATA_ENTITY}/documents`,
+          document,
+          {
+            metric: 'crm-create-document',
+            headers: withAuthToken()(vtexIdToken),
+          }
+        )
       )
-    )
+    } catch (e) {
+      if (e.response.data.Message === 'duplicated entry') {
+        throw new ResolverError(
+          'This email is already taken',
+          400,
+          'DUPLICATED_EMAIL'
+        )
+      } else {
+        throw new ResolverError(
+          'Some error has occurred',
+          400,
+          'RESOLVER_ERROR'
+        )
+      }
+    }
+  }
 
   public update = (
     vtexIdToken: string,

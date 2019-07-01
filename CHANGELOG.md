@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Better error handling for duplicate emails.
+
 ## [0.10.0] - 2019-05-08
 
 ## [0.9.0] - 2019-05-08
