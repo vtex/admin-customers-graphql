@@ -67,15 +67,15 @@ class Documents extends JanusClient {
     } catch (e) {
       if (e.response.data.Message === 'duplicated entry') {
         throw new ResolverError(
-          'This email is already taken',
+          'Email already registered.',
           400,
-          'DUPLICATED_EMAIL'
+          'admin/customers.form.error.duplicateEmail'
         )
       } else {
         throw new ResolverError(
-          'Some error has occurred',
+          'Some error has occurred.',
           400,
-          'RESOLVER_ERROR'
+          'admin/customers.form.error.genericError'
         )
       }
     }
