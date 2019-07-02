@@ -1,5 +1,5 @@
 import { JanusClient, ResolverError } from '@vtex/api'
-import { prop } from 'ramda'
+import { prop, path } from 'ramda'
 import { Document, DocumentPOSTResponse } from '../../typedql/types/Document'
 import { DATA_ENTITY } from '../utils/constants'
 import { mapKeyValues } from '../utils'
@@ -65,7 +65,7 @@ class Documents extends JanusClient {
         )
       )
     } catch (e) {
-      if (e.response.data.Message === 'duplicated entry') {
+      if (path(['response', 'data', 'Message'], e) === 'duplicated entry') {
         throw new ResolverError(
           'Email already registered.',
           400,
