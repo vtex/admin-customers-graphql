@@ -1,9 +1,16 @@
 {
   "compilerOptions": {
-    "types": ["node"],
-    "lib": ["esnext.asynciterable", "es2017"],
-    "typeRoots": ["node_modules/@types"],
-    "target": "es2017",
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "esnext.asynciterable",
+      "es2017"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "target": "es2019",
     "module": "commonjs",
     "moduleResolution": "node",
     "allowJs": false,
@@ -13,7 +20,7 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
     "strictNullChecks": true,
@@ -25,7 +32,12 @@
   "typeAcquisition": {
     "enable": false
   },
-  "include": ["./**/*", "../typedql/**/*.ts"],
-  "exclude": ["node_modules"],
+  "include": [
+    "./**/*",
+    "../typedql/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
   "compileOnSave": true
 }
