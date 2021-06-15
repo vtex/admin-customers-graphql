@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "admin-customers-graphql",
-  "version": "0.11.1",
+  "version": "1.0.0",
   "title": "CRM GraphQL",
   "description": "GraphQL API for Customer Relationship Management",
   "dependencies": {},

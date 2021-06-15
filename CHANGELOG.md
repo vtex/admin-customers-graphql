@@ -7,18 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.0.0] - 2021-06-15
+
 ### Added
 - Graphql dependence
 - Graphql schema with file .graphql
-- Id parameter in updateProfile mutation query
+- Id parameter in `updateProfile` mutation query
 - Types on resolvers response
 
 ### Changed
-- Node version
-- @vtex/api version
+- `node` version
+- `@vtex/api` version
 
 ### Removed
-- Typedql dependence
+- `typedql` dependence
 
 ## [0.11.1] - 2020-07-03
 
