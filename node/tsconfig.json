@@ -34,7 +34,7 @@
   },
   "include": [
     "./**/*",
-    "../typedql/**/*.ts"
+    "typedql/**/*.ts"
   ],
   "exclude": [
     "node_modules"

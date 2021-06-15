@@ -11,10 +11,10 @@
   "devDependencies": {
     "@types/graphql": "^14.0.7",
     "@types/koa": "^2.0.46",
-    "@types/node": "^7.10.5",
+    "@types/node": "^12.0.0",
     "@types/ramda": "types/npm-ramda#dist",
-    "@vtex/api": "3.8.1",
-    "typescript": "^3.9.6",
+    "@vtex/api": "6.42.1",
+    "typescript": "3.9.7",
     "vtex.admin-customers-graphql": "https://customers--vtexpaymentqa.myvtex.com/_v/private/typings/linked/v1/vtex.admin-customers-graphql@0.11.0+build1593782711/public/_types/react"
   },
   "scripts": {

@@ -1,6 +1,6 @@
 import { JanusClient, ResolverError } from '@vtex/api'
 import { prop, path } from 'ramda'
-import { Document, DocumentPOSTResponse } from '../../typedql/types/Document'
+import { Document, DocumentPOSTResponse } from '../typings/document'
 import { DATA_ENTITY } from '../utils/constants'
 import { mapKeyValues } from '../utils'
 import { withAuthToken } from './headers'

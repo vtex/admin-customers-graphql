@@ -6,9 +6,10 @@ import Maybe from 'graphql/tsutils/Maybe'
 import { DataEntitySchema } from '../../clients/schemas'
 import { defaultFields } from '../../utils'
 import { SCHEMA_NAME } from '../../utils/constants'
+import { SchemaResponse } from '../../typings/schema-response'
 
 export const queries = {
-  schema: async (_: unknown, __: unknown, ctx: Context) => {
+  schema: async (_: unknown, __: unknown, ctx: Context): Promise<SchemaResponse> => {
     const {
       clients: { schemas },
       cookies,
@@ -22,7 +23,7 @@ export const queries = {
       .list(vtexIdToken)
       .then(find<DataEntitySchema>(propEq('name', SCHEMA_NAME)))
 
-    return dataEntitySchema?.schema
+    return dataEntitySchema?.schema as SchemaResponse
   },
 }
 

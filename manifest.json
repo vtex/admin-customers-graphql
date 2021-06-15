@@ -6,8 +6,8 @@
   "description": "GraphQL API for Customer Relationship Management",
   "dependencies": {},
   "builders": {
-    "typedql": "0.x",
-    "node": "4.x"
+    "graphql": "1.x",
+    "node": "6.x"
   },
   "registries": [
     "smartcheckout"
