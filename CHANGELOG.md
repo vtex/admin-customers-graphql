@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Graphql dependence
 - Graphql schema with file .graphql
-- Id parameter in `updateProfile` mutation query
+- Id parameter in `updateDocument` mutation query
 - Types on resolvers response
 
 ### Changed
