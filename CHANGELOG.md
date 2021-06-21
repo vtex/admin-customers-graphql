@@ -7,8 +7,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [1.0.0] - 2021-06-15
-
 ### Added
 - Graphql dependence
 - Graphql schema with file .graphql

@@ -1,21 +1,3 @@
-# import { ID, Int } from './scalars'
-
-# export interface Tag {
-#   displayValue?: String
-#   scores?: Score[]
-# }
-
-# export interface Score {
-#   name?: String
-#   registers?: Register[]
-# }
-
-# export interface Register {
-#   point?: Int
-#   date?: String
-#   until?: String
-# }
-
 type User {
   """
   User ID
