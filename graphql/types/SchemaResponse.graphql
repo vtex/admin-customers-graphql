@@ -1,0 +1,61 @@
+type Property {
+  type: String
+  title: String
+  format: String
+  maxLength: Int
+}
+
+type Properties {
+  id: Property!
+  firstName: Property!
+  lastName: Property!
+  email: Property!
+  document: Property!
+  userId: Property!
+  birthDate: Property!
+  phone: Property!
+  businessPhone: Property!
+  tradeName: Property!
+  corporateName: Property!
+  isCorporate: Property!
+  gender: Property!
+  homePhone: Property!
+  stateRegistration: Property!
+  documentType: Property!
+  corporateDocument: Property!
+  isNewsletterOptIn: Property!
+  rcLastCart: Property!
+  rcLastSession: Property!
+  rcLastCartValue: Property!
+  rcLastSessionDate: Property!
+}
+
+"""
+CRM Schema
+"""
+type SchemaResponse {
+  """
+  Properties of Schema 
+  """
+  properties: Properties!
+  """
+  Required fields of Schema 
+  """
+  required: [String!]!
+  """
+  Indexed fields of Schema 
+  """
+  vIndexed: [String!]!
+  """
+  Custom fields created by the user 
+  """
+  customFields: [CustomField!]
+}
+
+"""
+Custom field in a key/value format 
+"""
+type CustomField {
+  key: String!
+  value: Property!
+}

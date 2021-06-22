@@ -1,0 +1,13 @@
+
+
+type Query {
+  schema: SchemaResponse!
+  users(perPage: Int!, pageNumber: Int!, filter: String): [User!]!
+  totalNumberOfUsers(filter: String): Int!
+}
+
+type Mutation {
+  saveDocument(document: DocumentInput!): DocumentPOSTResponse!
+  updateDocument(id: ID!, document: DocumentInput!): Document!
+  deleteDocument(id: ID!): CacheableDocument!
+}

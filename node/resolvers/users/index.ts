@@ -1,8 +1,9 @@
 import { prop } from 'ramda'
 import { AuthenticationError } from '@vtex/api'
+import { User } from '../../typings/user'
 
 export const queries = {
-  users: (_: any, args: UsersArgs, ctx: Context) => {
+  users: (_: any, args: UsersArgs, ctx: Context): Promise<User[]> => {
     const { filter, perPage, pageNumber } = args
     const {
       clients: { users },

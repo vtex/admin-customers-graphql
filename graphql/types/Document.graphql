@@ -1,0 +1,35 @@
+type CacheableDocument {
+  """
+  id is used as cacheId 
+  """
+  cacheId: ID!
+  id: ID!
+}
+
+type Document {
+  fields: [Field!]!
+  cacheId: ID!
+  id: ID!
+}
+
+type Field {
+  key: String!
+  value: String!
+}
+
+type DocumentPOSTResponse {
+  href: String!
+  documentId: String!
+  cacheId: ID!
+  id: ID!
+}
+
+input DocumentInput {
+  fields: [FieldInput!]!
+}
+
+
+input FieldInput {
+  key: String
+  value: String
+}

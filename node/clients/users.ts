@@ -1,7 +1,7 @@
 import { JanusClient } from '@vtex/api'
 
 import { DATA_ENTITY } from '../utils/constants'
-import { Int } from '../../typedql/types/scalars'
+import { Int } from '../typings/scalars'
 import { withAuthToken } from './headers'
 
 class Users extends JanusClient {

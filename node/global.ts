@@ -1,9 +1,9 @@
 import { ServiceContext } from '@vtex/api'
 import { Clients } from './clients'
-import { Int } from '../typedql/types/scalars'
+import { Int } from './typings/scalars'
 
 declare global {
-  type Context = ServiceContext<Clients, void>
+  type Context = ServiceContext<Clients>
 
   interface UsersArgs {
     filter: string

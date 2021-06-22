@@ -1,10 +1,10 @@
-import { ID } from '../../../typedql/types/scalars'
+import { ID } from '../../typings/scalars'
 import {
   CacheableDocument,
   Document,
   DocumentInput,
   DocumentPOSTResponse,
-} from '../../../typedql/types/Document'
+} from '../../typings/document'
 import { parseFieldsToJson } from '../../utils'
 import { AuthenticationError } from '@vtex/api'
 
@@ -25,7 +25,7 @@ export const mutations = {
   },
   updateDocument: async (
     _: any,
-    { document }: { document: DocumentInput },
+    { id, document }: { id: string, document: DocumentInput },
     ctx: Context
   ): Promise<Document> => {
     const {
@@ -36,8 +36,8 @@ export const mutations = {
     if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
     const updatedDocument = parseFieldsToJson(document.fields)
-    await documents.update(vtexIdToken, updatedDocument, updatedDocument.id)
-    return documents.get(updatedDocument.id, vtexIdToken)
+    await documents.update(vtexIdToken, updatedDocument, id)
+    return documents.get(id, vtexIdToken)
   },
   deleteDocument: async (
     _: any,
