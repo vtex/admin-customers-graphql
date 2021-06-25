@@ -14,3 +14,4 @@ jspm_packages/
 .DS_Store
 .vscode/
 *.orig
+node/coverage/*

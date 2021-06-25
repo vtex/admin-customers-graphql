@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AuthenticationError } from '@vtex/api'
 import { difference, find, prop, propEq, reduce } from 'ramda'
 import Maybe from 'graphql/tsutils/Maybe'
@@ -9,7 +8,11 @@ import { SCHEMA_NAME } from '../../utils/constants'
 import { SchemaResponse } from '../../typings/schema-response'
 
 export const queries = {
-  schema: async (_: unknown, __: unknown, ctx: Context): Promise<SchemaResponse> => {
+  schema: async (
+    _: unknown,
+    __: unknown,
+    ctx: Context
+  ): Promise<SchemaResponse> => {
     const {
       clients: { schemas },
       cookies,

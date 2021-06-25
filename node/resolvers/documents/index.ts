@@ -1,3 +1,5 @@
+import { AuthenticationError } from '@vtex/api'
+
 import { ID } from '../../typings/scalars'
 import {
   CacheableDocument,
@@ -6,7 +8,6 @@ import {
   DocumentPOSTResponse,
 } from '../../typings/document'
 import { parseFieldsToJson } from '../../utils'
-import { AuthenticationError } from '@vtex/api'
 
 export const mutations = {
   saveDocument: (
@@ -18,25 +19,31 @@ export const mutations = {
       clients: { documents },
       cookies,
     } = ctx
+
     const vtexIdToken = cookies.get('VtexIdclientAutCookie')
+
     if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
     return documents.save(parseFieldsToJson(document.fields), vtexIdToken)
   },
   updateDocument: async (
     _: any,
-    { id, document }: { id: string, document: DocumentInput },
+    { id, document }: { id: string; document: DocumentInput },
     ctx: Context
   ): Promise<Document> => {
     const {
       clients: { documents },
       cookies,
     } = ctx
+
     const vtexIdToken = cookies.get('VtexIdclientAutCookie')
+
     if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
     const updatedDocument = parseFieldsToJson(document.fields)
+
     await documents.update(vtexIdToken, updatedDocument, id)
+
     return documents.get(id, vtexIdToken)
   },
   deleteDocument: async (
@@ -48,9 +55,13 @@ export const mutations = {
       clients: { documents },
       cookies,
     } = ctx
+
     const vtexIdToken = cookies.get('VtexIdclientAutCookie')
+
     if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
+
     await documents.delete(id, vtexIdToken)
+
     return { cacheId: id, id }
   },
 }

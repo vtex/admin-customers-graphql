@@ -3,6 +3,7 @@ import { JanusClient } from '@vtex/api'
 import { DATA_ENTITY } from '../utils/constants'
 import { Int } from '../typings/scalars'
 import { withAuthToken } from './headers'
+import { User } from '../typings/user'
 
 class Users extends JanusClient {
   public get = (
@@ -15,7 +16,7 @@ class Users extends JanusClient {
     // not inclusive
     const to = perPage * (pageNumber + 1)
 
-    return this.http.get(
+    return this.http.get<User[]>(
       `api/dataentities/${DATA_ENTITY}/search?_fields=_all${
         filter ? `&${filter}` : ''
       }`,
@@ -40,7 +41,8 @@ class Users extends JanusClient {
     )
 
     const contentRange = res.headers['rest-content-range']
-    return parseInt(contentRange.split('/')[1])
+
+    return parseInt(contentRange.split('/')[1], 10)
   }
 }
 

@@ -1,19 +1,9 @@
 {
+  "extends": "@vtex/tsconfig",
   "compilerOptions": {
-    "types": [
-      "node"
-    ],
-    "lib": [
-      "esnext.asynciterable",
-      "es2017"
-    ],
-    "typeRoots": [
-      "node_modules/@types"
-    ],
     "target": "es2019",
     "module": "commonjs",
     "moduleResolution": "node",
-    "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "noEmitOnError": true,
@@ -29,15 +19,6 @@
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
-  "typeAcquisition": {
-    "enable": false
-  },
-  "include": [
-    "./**/*",
-    "typedql/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+  "include": ["./**/*", "**/*.ts", "./**/*.ts"],
   "compileOnSave": true
 }

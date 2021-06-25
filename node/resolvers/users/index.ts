@@ -1,5 +1,6 @@
 import { prop } from 'ramda'
 import { AuthenticationError } from '@vtex/api'
+
 import { User } from '../../typings/user'
 
 export const queries = {
@@ -9,7 +10,9 @@ export const queries = {
       clients: { users },
       cookies,
     } = ctx
+
     const vtexIdToken = cookies.get('VtexIdclientAutCookie')
+
     if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
     return users.get(filter, perPage, pageNumber, vtexIdToken)
@@ -20,7 +23,9 @@ export const queries = {
       clients: { users },
       cookies,
     } = ctx
+
     const vtexIdToken = cookies.get('VtexIdclientAutCookie')
+
     if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
     return users.getTotalNumber(filter, vtexIdToken)
