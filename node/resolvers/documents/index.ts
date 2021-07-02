@@ -7,16 +7,16 @@ import {
   DocumentInput,
   DocumentPOSTResponse,
 } from '../../typings/document'
-import { parseFieldsToJson } from '../../utils'
+import { save, update, deleteDocument } from '../../services/documents'
 
 export const mutations = {
-  saveDocument: (
-    _: any,
+  saveDocument: async (
+    _: unknown,
     { document }: { document: DocumentInput },
     ctx: Context
   ): Promise<DocumentPOSTResponse> => {
     const {
-      clients: { documents },
+      clients: { customMasterdata },
       cookies,
     } = ctx
 
@@ -24,15 +24,15 @@ export const mutations = {
 
     if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
-    return documents.save(parseFieldsToJson(document.fields), vtexIdToken)
+    return save({ client: customMasterdata, documentInput: document })
   },
   updateDocument: async (
-    _: any,
+    _: unknown,
     { id, document }: { id: string; document: DocumentInput },
     ctx: Context
   ): Promise<Document> => {
     const {
-      clients: { documents },
+      clients: { customMasterdata },
       cookies,
     } = ctx
 
@@ -40,19 +40,15 @@ export const mutations = {
 
     if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
-    const updatedDocument = parseFieldsToJson(document.fields)
-
-    await documents.update(vtexIdToken, updatedDocument, id)
-
-    return documents.get(id, vtexIdToken)
+    return update({ client: customMasterdata, id, documentInput: document })
   },
   deleteDocument: async (
-    _: any,
+    _: unknown,
     { id }: { id: ID },
     ctx: Context
   ): Promise<CacheableDocument> => {
     const {
-      clients: { documents },
+      clients: { customMasterdata },
       cookies,
     } = ctx
 
@@ -60,8 +56,6 @@ export const mutations = {
 
     if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
-    await documents.delete(id, vtexIdToken)
-
-    return { cacheId: id, id }
+    return deleteDocument({ client: customMasterdata, id })
   },
 }

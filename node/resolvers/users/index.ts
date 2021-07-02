@@ -1,13 +1,13 @@
 import { prop } from 'ramda'
 import { AuthenticationError } from '@vtex/api'
 
-import { User } from '../../typings/user'
+import { UserResponse } from '../../typings/user'
+import { search } from '../../services/users'
 
 export const queries = {
-  users: (_: any, args: UsersArgs, ctx: Context): Promise<User[]> => {
-    const { filter, perPage, pageNumber } = args
+  users: (_: unknown, args: UsersArgs, ctx: Context): Promise<UserResponse> => {
     const {
-      clients: { users },
+      clients: { customMasterdata },
       cookies,
     } = ctx
 
@@ -15,20 +15,7 @@ export const queries = {
 
     if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
-    return users.get(filter, perPage, pageNumber, vtexIdToken)
-  },
-  totalNumberOfUsers: (_: any, args: { filter: string }, ctx: Context) => {
-    const { filter } = args
-    const {
-      clients: { users },
-      cookies,
-    } = ctx
-
-    const vtexIdToken = cookies.get('VtexIdclientAutCookie')
-
-    if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
-
-    return users.getTotalNumber(filter, vtexIdToken)
+    return search({ client: customMasterdata, params: args })
   },
 }
 

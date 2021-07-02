@@ -1,4 +1,5 @@
 import { ServiceContext } from '@vtex/api'
+
 import { Clients } from './clients'
 import { Int } from './typings/scalars'
 

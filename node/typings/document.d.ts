@@ -27,3 +27,14 @@ export interface FieldInput {
   key: string
   value: string
 }
+
+export interface RawDocumentPOSTResponse {
+  Id: string
+  DocumentId: string
+  Href: string
+}
+
+export interface RawDocumentGETResponse {
+  id: string
+  [key: string]: any
+}

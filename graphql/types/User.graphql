@@ -4,7 +4,7 @@ type User {
   """
   id: ID!
   """
-  Indicates it is a company 
+  Indicates it is a company
   """
   isCorporate: Boolean
   """
@@ -32,7 +32,7 @@ type User {
   """
   userId: ID
   """
-  First name of customer 
+  First name of customer
   """
   firstName: String
   """
@@ -40,7 +40,7 @@ type User {
   """
   lastName: String
   """
-  No. of CPF or CNPJ of customer 
+  No. of CPF or CNPJ of customer
   """
   document: String
   """
@@ -87,4 +87,33 @@ type User {
   Date of last browsing session saved
   """
   rcLastSessionDate: String
+}
+
+"""
+A pagination structure
+"""
+type Pagination {
+  """
+  Page number
+  """
+  page: Int!
+  """
+  Number of items per page
+  """
+  pageSize: Int!
+  """
+  Total number of items
+  """
+  total: Int!
+}
+
+type UserPageResponse {
+  """
+  Users
+  """
+  data: [User!]!
+  """
+  Pagination info
+  """
+  pagination: Pagination!
 }

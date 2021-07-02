@@ -7,7 +7,15 @@ import {
   Document,
   CacheableDocument,
 } from '../../typings/document'
-import { parseFieldsToJson } from '../../utils'
+import { deleteDocument, update, save } from '../../services/documents'
+
+jest.mock('../../services/documents', () => {
+  return {
+    save: jest.fn(),
+    update: jest.fn(),
+    deleteDocument: jest.fn(),
+  }
+})
 
 describe('documents', () => {
   describe('saveDocument', () => {
@@ -25,13 +33,17 @@ describe('documents', () => {
         id: 'id',
       }
 
+      const mockService = save as jest.Mock
+
+      mockService.mockImplementation(() => mockResult)
+
       const context = {
         cookies: {
           get: jest.fn().mockImplementation(() => token),
         },
         clients: {
-          documents: {
-            save: jest.fn().mockImplementation(() => mockResult),
+          customMasterdata: {
+            createDocument: jest.fn(),
           },
         },
       } as any
@@ -44,10 +56,10 @@ describe('documents', () => {
       )
 
       // assert
-      expect(context.clients.documents.save).toHaveBeenCalledWith(
-        parseFieldsToJson(documentToAdd.fields),
-        token
-      )
+      expect(save).toHaveBeenCalledWith({
+        client: context.clients.customMasterdata,
+        documentInput: documentToAdd,
+      })
       expect(document).toBeTruthy()
     })
 
@@ -58,18 +70,18 @@ describe('documents', () => {
           get: jest.fn(),
         },
         clients: {
-          documents: {
-            save: jest.fn(),
+          customMasterdata: {
+            createDocument: jest.fn(),
           },
         },
       } as any
 
-      expect(() =>
+      await expect(
         // act
         mutations.saveDocument({}, { document: { fields: [] } }, context)
       )
         // assert
-        .toThrow(new AuthenticationError('User is not logged in'))
+        .rejects.toThrow(new AuthenticationError('User is not logged in'))
     })
   })
 
@@ -91,14 +103,18 @@ describe('documents', () => {
         cacheId: '',
       }
 
+      const mockService = update as jest.Mock
+
+      mockService.mockImplementation(() => mockResult)
+
       const context = {
         cookies: {
           get: jest.fn().mockImplementation(() => token),
         },
         clients: {
-          documents: {
-            update: jest.fn(),
-            get: jest.fn().mockImplementation(() => mockResult),
+          customMasterdata: {
+            updatePartialDocument: jest.fn(),
+            getDocument: jest.fn(),
           },
         },
       } as any
@@ -111,16 +127,12 @@ describe('documents', () => {
       )
 
       // assert
-      expect(context.clients.documents.update).toHaveBeenCalledWith(
-        token,
-        parseFieldsToJson(documentToUpdate.fields),
-        documentId
-      )
+      expect(update).toHaveBeenCalledWith({
+        client: context.clients.customMasterdata,
+        id: documentId,
+        documentInput: documentToUpdate,
+      })
 
-      expect(context.clients.documents.get).toHaveBeenCalledWith(
-        documentId,
-        token
-      )
       expect(document).toBeTruthy()
     })
 
@@ -131,9 +143,9 @@ describe('documents', () => {
           get: jest.fn(),
         },
         clients: {
-          documents: {
-            update: jest.fn(),
-            get: jest.fn(),
+          customMasterdata: {
+            updatePartialDocument: jest.fn(),
+            getDocument: jest.fn(),
           },
         },
       } as any
@@ -162,13 +174,17 @@ describe('documents', () => {
         cacheId: documentId,
       }
 
+      const mockService = deleteDocument as jest.Mock
+
+      mockService.mockImplementation(() => mockResult)
+
       const context = {
         cookies: {
           get: jest.fn().mockImplementation(() => token),
         },
         clients: {
-          documents: {
-            delete: jest.fn().mockImplementation(() => mockResult),
+          customMasterdata: {
+            deleteDocument: jest.fn(),
           },
         },
       } as any
@@ -181,10 +197,11 @@ describe('documents', () => {
       )
 
       // assert
-      expect(context.clients.documents.delete).toHaveBeenCalledWith(
-        documentId,
-        token
-      )
+      expect(deleteDocument).toHaveBeenCalledWith({
+        client: context.clients.customMasterdata,
+        id: documentId,
+      })
+
       expect(document).toBeTruthy()
     })
 
@@ -195,9 +212,8 @@ describe('documents', () => {
           get: jest.fn(),
         },
         clients: {
-          documents: {
-            update: jest.fn(),
-            get: jest.fn(),
+          customMasterdata: {
+            deleteDocument: jest.fn(),
           },
         },
       } as any

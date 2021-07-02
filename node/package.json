@@ -21,7 +21,7 @@
   },
   "scripts": {
     "lint": "eslint --ext .ts .",
-    "test": "vtex-test-tools test --coverage",
+    "test": "vtex-test-tools test",
     "test:watch": "vtex-test-tools test --watch",
     "test:coverage": "vtex-test-tools test --coverage"
   },

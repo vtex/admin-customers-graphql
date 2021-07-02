@@ -1,25 +1,33 @@
 import { AuthenticationError } from '@vtex/api'
 
 import { queries } from '../../resolvers/schemas'
+import { getSchema } from '../../services/schemas'
+import schemasMock from '../../mocks/schemas'
+
+jest.mock('../../services/schemas', () => {
+  return {
+    getSchema: jest.fn(),
+  }
+})
 
 jest.mock('ramda')
-
-const schemasMock = jest.mock('../../__mocks__/schemas')
 
 describe('schema', () => {
   it('should call schema success', async () => {
     // arrange
     const token = 'mockToken'
 
+    const mockService = getSchema as jest.Mock
+
+    mockService.mockImplementation(() => schemasMock)
+
     const context = {
       cookies: {
         get: jest.fn().mockImplementation(() => token),
       },
       clients: {
-        schemas: {
-          list: jest
-            .fn()
-            .mockImplementation(() => Promise.resolve({ schema: schemasMock })),
+        customMasterdata: {
+          getSchema: jest.fn(),
         },
       },
     } as any
@@ -28,7 +36,9 @@ describe('schema', () => {
     const schemas = await queries.schema({}, {}, context)
 
     // assert
-    expect(context.clients.schemas.list).toHaveBeenCalled()
+    expect(getSchema).toHaveBeenCalledWith({
+      client: context.clients.customMasterdata,
+    })
     expect(schemas).toMatchObject(schemasMock)
   })
 
@@ -40,8 +50,8 @@ describe('schema', () => {
         get: jest.fn(),
       },
       clients: {
-        schemas: {
-          list: jest.fn(),
+        customMasterdata: {
+          getSchema: jest.fn(),
         },
       },
     } as any
