@@ -14,6 +14,7 @@ export class CustomMasterdata extends MasterData {
     super(ctx, {
       ...options,
       headers: {
+        // Injecting `ctx.adminUserAuthToken` in headers to force the client to use the admin user authentication instead of the application one.
         VtexIdclientAutCookie: ctx.adminUserAuthToken,
       },
     })
