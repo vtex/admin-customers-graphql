@@ -4,7 +4,7 @@ type User {
   """
   id: ID!
   """
-  Indicates it is a company
+  Indicates if it is a company
   """
   isCorporate: Boolean
   """
