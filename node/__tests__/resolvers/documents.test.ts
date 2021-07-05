@@ -62,27 +62,6 @@ describe('documents', () => {
       })
       expect(document).toBeTruthy()
     })
-
-    it('should call save and get error without token', async () => {
-      // arrange
-      const context = {
-        cookies: {
-          get: jest.fn(),
-        },
-        clients: {
-          customMasterdata: {
-            createDocument: jest.fn(),
-          },
-        },
-      } as any
-
-      await expect(
-        // act
-        mutations.saveDocument({}, { document: { fields: [] } }, context)
-      )
-        // assert
-        .rejects.toThrow(new AuthenticationError('User is not logged in'))
-    })
   })
 
   describe('updateDocument', () => {
@@ -135,32 +114,6 @@ describe('documents', () => {
 
       expect(document).toBeTruthy()
     })
-
-    it('should call update and get error without token', async () => {
-      // arrange
-      const context = {
-        cookies: {
-          get: jest.fn(),
-        },
-        clients: {
-          customMasterdata: {
-            updatePartialDocument: jest.fn(),
-            getDocument: jest.fn(),
-          },
-        },
-      } as any
-
-      await expect(
-        // act
-        mutations.updateDocument(
-          {},
-          { id: '', document: { fields: [] } },
-          context
-        )
-      )
-        // assert
-        .rejects.toThrow(new AuthenticationError('User is not logged in'))
-    })
   })
 
   describe('deleteDocument', () => {
@@ -203,27 +156,6 @@ describe('documents', () => {
       })
 
       expect(document).toBeTruthy()
-    })
-
-    it('should call delete and get error without token', async () => {
-      // arrange
-      const context = {
-        cookies: {
-          get: jest.fn(),
-        },
-        clients: {
-          customMasterdata: {
-            deleteDocument: jest.fn(),
-          },
-        },
-      } as any
-
-      await expect(
-        // act
-        mutations.deleteDocument({}, { id: '' }, context)
-      )
-        // assert
-        .rejects.toThrow(new AuthenticationError('User is not logged in'))
     })
   })
 })

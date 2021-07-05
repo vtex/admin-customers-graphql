@@ -1,5 +1,3 @@
-import { AuthenticationError } from '@vtex/api'
-
 import { ID } from '../../typings/scalars'
 import {
   CacheableDocument,
@@ -17,12 +15,7 @@ export const mutations = {
   ): Promise<DocumentPOSTResponse> => {
     const {
       clients: { customMasterdata },
-      cookies,
     } = ctx
-
-    const vtexIdToken = cookies.get('VtexIdclientAutCookie')
-
-    if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
     return save({ client: customMasterdata, documentInput: document })
   },
@@ -33,12 +26,7 @@ export const mutations = {
   ): Promise<Document> => {
     const {
       clients: { customMasterdata },
-      cookies,
     } = ctx
-
-    const vtexIdToken = cookies.get('VtexIdclientAutCookie')
-
-    if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
     return update({ client: customMasterdata, id, documentInput: document })
   },
@@ -49,12 +37,7 @@ export const mutations = {
   ): Promise<CacheableDocument> => {
     const {
       clients: { customMasterdata },
-      cookies,
     } = ctx
-
-    const vtexIdToken = cookies.get('VtexIdclientAutCookie')
-
-    if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
     return deleteDocument({ client: customMasterdata, id })
   },

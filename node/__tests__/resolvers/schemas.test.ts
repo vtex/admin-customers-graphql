@@ -41,24 +41,4 @@ describe('schema', () => {
     })
     expect(schemas).toMatchObject(schemasMock)
   })
-
-  it('should call schema and get error without token', async () => {
-    // arrange
-
-    const context = {
-      cookies: {
-        get: jest.fn(),
-      },
-      clients: {
-        customMasterdata: {
-          getSchema: jest.fn(),
-        },
-      },
-    } as any
-
-    // act
-    await expect(queries.schema({}, {}, context))
-      // assert
-      .rejects.toThrow(new AuthenticationError('User is not logged in'))
-  })
 })
