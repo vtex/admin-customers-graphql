@@ -1,29 +1,20 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { AuthenticationError } from '@vtex/api'
-import { difference, find, prop, propEq, reduce } from 'ramda'
-import Maybe from 'graphql/tsutils/Maybe'
+import { difference, prop, reduce } from 'ramda'
 
-import { DataEntitySchema } from '../../clients/schemas'
 import { defaultFields } from '../../utils'
-import { SCHEMA_NAME } from '../../utils/constants'
-import { SchemaResponse } from '../../typings/schema-response'
+import { SchemaResponse } from '../../typings/schema'
+import { getSchema } from '../../services/schemas'
 
 export const queries = {
-  schema: async (_: unknown, __: unknown, ctx: Context): Promise<SchemaResponse> => {
+  schema: async (
+    _: unknown,
+    __: unknown,
+    ctx: Context
+  ): Promise<SchemaResponse> => {
     const {
-      clients: { schemas },
-      cookies,
+      clients: { customMasterdata },
     } = ctx
 
-    const vtexIdToken = cookies.get('VtexIdclientAutCookie')
-
-    if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
-
-    const dataEntitySchema: Maybe<DataEntitySchema> = await schemas
-      .list(vtexIdToken)
-      .then(find<DataEntitySchema>(propEq('name', SCHEMA_NAME)))
-
-    return dataEntitySchema?.schema as SchemaResponse
+    return getSchema({ client: customMasterdata })
   },
 }
 

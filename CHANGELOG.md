@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Resolver tests
+- `masterdata` client
+- Services to centralize data access
+
+### Changed
+- `totalNumberOfUsers` was added on `users` return as `pagination`
+
+### Removed
+- `documents`, `schemas` and `user` clients were replaced to `masterdata`
+
 ## [2.0.0] - 2021-06-22
 
 ### Added

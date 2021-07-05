@@ -1,9 +1,6 @@
-
-
 type Query {
   schema: SchemaResponse!
-  users(perPage: Int!, pageNumber: Int!, filter: String): [User!]!
-  totalNumberOfUsers(filter: String): Int!
+  users(perPage: Int!, pageNumber: Int!, filter: String): UserPageResponse!
 }
 
 type Mutation {

@@ -24,3 +24,13 @@ export interface User {
   rcLastSession?: string
   rcLastSessionDate?: string
 }
+
+export interface Pagination {
+  total: number
+  page: number
+  pageSize: number
+}
+export interface UserResponse {
+  data: User[]
+  pagination: Pagination
+}

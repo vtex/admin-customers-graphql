@@ -5,52 +5,40 @@ import {
   DocumentInput,
   DocumentPOSTResponse,
 } from '../../typings/document'
-import { parseFieldsToJson } from '../../utils'
-import { AuthenticationError } from '@vtex/api'
+import { save, update, deleteDocument } from '../../services/documents'
 
 export const mutations = {
-  saveDocument: (
-    _: any,
+  saveDocument: async (
+    _: unknown,
     { document }: { document: DocumentInput },
     ctx: Context
   ): Promise<DocumentPOSTResponse> => {
     const {
-      clients: { documents },
-      cookies,
+      clients: { customMasterdata },
     } = ctx
-    const vtexIdToken = cookies.get('VtexIdclientAutCookie')
-    if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
-    return documents.save(parseFieldsToJson(document.fields), vtexIdToken)
+    return save({ client: customMasterdata, documentInput: document })
   },
   updateDocument: async (
-    _: any,
-    { id, document }: { id: string, document: DocumentInput },
+    _: unknown,
+    { id, document }: { id: string; document: DocumentInput },
     ctx: Context
   ): Promise<Document> => {
     const {
-      clients: { documents },
-      cookies,
+      clients: { customMasterdata },
     } = ctx
-    const vtexIdToken = cookies.get('VtexIdclientAutCookie')
-    if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
-    const updatedDocument = parseFieldsToJson(document.fields)
-    await documents.update(vtexIdToken, updatedDocument, id)
-    return documents.get(id, vtexIdToken)
+    return update({ client: customMasterdata, id, documentInput: document })
   },
   deleteDocument: async (
-    _: any,
+    _: unknown,
     { id }: { id: ID },
     ctx: Context
   ): Promise<CacheableDocument> => {
     const {
-      clients: { documents },
-      cookies,
+      clients: { customMasterdata },
     } = ctx
-    const vtexIdToken = cookies.get('VtexIdclientAutCookie')
-    if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
-    await documents.delete(id, vtexIdToken)
-    return { cacheId: id, id }
+
+    return deleteDocument({ client: customMasterdata, id })
   },
 }

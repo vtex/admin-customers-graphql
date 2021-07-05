@@ -13,12 +13,17 @@
     "@types/koa": "^2.0.46",
     "@types/node": "^12.0.0",
     "@types/ramda": "types/npm-ramda#dist",
-    "@vtex/api": "6.42.1",
+    "@vtex/api": "6.43.0",
+    "@vtex/test-tools": "2.1.1",
+    "@vtex/tsconfig": "^0.5.6",
     "typescript": "3.9.7",
     "vtex.admin-customers-graphql": "https://customers--vtexpaymentqa.myvtex.com/_v/private/typings/linked/v1/vtex.admin-customers-graphql@0.11.0+build1593782711/public/_types/react"
   },
   "scripts": {
-    "lint": "eslint --ext .ts ."
+    "lint": "eslint --ext .ts .",
+    "test": "vtex-test-tools test",
+    "test:watch": "vtex-test-tools test --watch",
+    "test:coverage": "vtex-test-tools test --coverage"
   },
   "version": "2.0.0"
 }

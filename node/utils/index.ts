@@ -26,7 +26,7 @@ export const parseFieldsToJson = (
  * Map a document object to a list of {key: 'property', value: 'propertyValue'}.
  */
 export const mapKeyValues = (document: any) =>
-  Object.keys(document).map(key => ({
+  Object.keys(document).map((key) => ({
     key,
     value: document[key],
   }))

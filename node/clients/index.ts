@@ -1,8 +1,7 @@
 import { AuthType, ClientsConfig, IOClients, LRUCache } from '@vtex/api'
-import Schemas from './schemas'
-import Documents from './documents'
-import Users from './users'
 import { forEachObjIndexed } from 'ramda'
+
+import { CustomMasterdata } from './masterdata'
 
 const memoryCache = {
   documents: new LRUCache<string, any>({ max: 4000 }),
@@ -15,14 +14,8 @@ forEachObjIndexed((cacheInstance: LRUCache<string, any>, cacheName: string) => {
 }, memoryCache)
 
 export class Clients extends IOClients {
-  public get schemas() {
-    return this.getOrSet('schemas', Schemas)
-  }
-  public get documents() {
-    return this.getOrSet('documents', Documents)
-  }
-  public get users() {
-    return this.getOrSet('users', Users)
+  public get customMasterdata() {
+    return this.getOrSet('customMasterdata', CustomMasterdata)
   }
 }
 

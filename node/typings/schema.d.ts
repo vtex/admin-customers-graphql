@@ -43,3 +43,8 @@ export interface CustomField {
   key: string
   value: Property
 }
+
+export interface DataEntitySchema {
+  name: string
+  schema: unknown
+}
