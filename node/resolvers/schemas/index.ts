@@ -1,4 +1,3 @@
-import { AuthenticationError } from '@vtex/api'
 import { difference, prop, reduce } from 'ramda'
 
 import { defaultFields } from '../../utils'
@@ -13,12 +12,7 @@ export const queries = {
   ): Promise<SchemaResponse> => {
     const {
       clients: { customMasterdata },
-      cookies,
     } = ctx
-
-    const vtexIdToken = cookies.get('VtexIdclientAutCookie')
-
-    if (!vtexIdToken) throw new AuthenticationError('User is not logged in')
 
     return getSchema({ client: customMasterdata })
   },

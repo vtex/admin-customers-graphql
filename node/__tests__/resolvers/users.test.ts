@@ -42,28 +42,4 @@ describe('users', () => {
     expect(users).toBeTruthy()
     expect(users.data).toHaveLength(17)
   })
-
-  it('should call users and get error without token', async () => {
-    // arrange
-
-    const params = { filter: 'filter', pageNumber: 1, perPage: 10 }
-
-    const context = {
-      cookies: {
-        get: jest.fn(),
-      },
-      clients: {
-        users: {
-          getTotalNumber: jest.fn(),
-        },
-      },
-    } as any
-
-    expect(() =>
-      // act
-      queries.users({}, params, context)
-    )
-      // assert
-      .toThrow(new AuthenticationError('User is not logged in'))
-  })
 })
