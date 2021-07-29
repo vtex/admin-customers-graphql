@@ -1,32 +1,116 @@
+"""
+Property contains fields with informations about custom fields
+"""
 type Property {
+  """
+  Type of field like string/boolean/integer
+  """
   type: String
+  """
+  Title of field like a label
+  """
   title: String
+  """
+  Format of field like date-time/email
+  """
   format: String
+  """
+  Max length of field
+  """
   maxLength: Int
 }
 
+"""
+Provide the properties about each field
+"""
 type Properties {
+  """
+  User ID
+  """
   id: Property!
+  """
+  First name of customer
+  """
   firstName: Property!
+  """
+  Last name of customer
+  """
   lastName: Property!
+  """
+  Email address of customer
+  """
   email: Property!
+  """
+  No. of CPF or CNPJ of customer
+  """
   document: Property!
+  """
+  ID of customer in CRM
+  """
   userId: Property!
+  """
+  User bithdate
+  """
   birthDate: Property!
+  """
+  Phone no. of customer
+  """
   phone: Property!
+  """
+  Registered phone of the company.
+  """
   businessPhone: Property!
+  """
+  Company (PJ) – Trade name
+  """
   tradeName: Property!
+  """
+  Company name
+  """
   corporateName: Property!
+  """
+  Indicates if it is a company
+  """
   isCorporate: Property!
+  """
+  Gender of customer
+  """
   gender: Property!
+  """
+  Registered phone no. of customer
+  """
   homePhone: Property!
+  """
+  State registration of Company
+  """
   stateRegistration: Property!
+  """
+  Type of document of customer
+  """
   documentType: Property!
+  """
+  CNPJ number
+  """
   corporateDocument: Property!
+  """
+  Opted to receive Newsletter
+  """
   isNewsletterOptIn: Property!
+  """
+  URl to restock shopping cart with all the products
+  """
   rcLastCart: Property!
+  """
+  ID of browsing script session
+  """
   rcLastSession: Property!
+  """
+  Value of last cart
+  """
   rcLastCartValue: Property!
+  """
+  Date of last browsing session saved
+  """
   rcLastSessionDate: Property!
 }
 
@@ -35,27 +119,33 @@ CRM Schema
 """
 type SchemaResponse {
   """
-  Properties of Schema 
+  Properties of Schema
   """
   properties: Properties!
   """
-  Required fields of Schema 
+  Required fields of Schema
   """
   required: [String!]!
   """
-  Indexed fields of Schema 
+  Indexed fields of Schema
   """
   vIndexed: [String!]!
   """
-  Custom fields created by the user 
+  Custom fields created by the user
   """
   customFields: [CustomField!]
 }
 
 """
-Custom field in a key/value format 
+Custom field in a key/value format
 """
 type CustomField {
+  """
+  Key that identify a custom field
+  """
   key: String!
+  """
+  Value of custom field
+  """
   value: Property!
 }

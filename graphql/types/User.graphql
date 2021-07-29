@@ -1,3 +1,6 @@
+"""
+A user contains default properties of masterdata entity
+"""
 type User {
   """
   User ID
@@ -107,9 +110,12 @@ type Pagination {
   total: Int!
 }
 
+"""
+A entity that contains a list with users and a pagination properties
+"""
 type UserPageResponse {
   """
-  Users
+  List with users
   """
   data: [User!]!
   """
