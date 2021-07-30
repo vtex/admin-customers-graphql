@@ -14,7 +14,7 @@ Document with fields that was updated
 """
 type Document {
   """
-  Fields was updated
+  Fields were updated
   """
   fields: [Field!]!
   """
