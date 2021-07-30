@@ -10,7 +10,7 @@ type CacheableDocument {
 }
 
 """
-Document with fields that was updated
+Document with fields that were updated
 """
 type Document {
   """
