@@ -1,5 +1,5 @@
 # admin-customers-graphql
-This project is a GraphQL API to manage and consume customers informations, also is possible list default and custom fields that was configured on Masterdata schema.
+This project is a GraphQL API to manage and consume customers informations, it is also possible to list default and custom fields that were configured on Masterdata schema.
 
 The implementation is based on MasterData structure, and manage the documents with acronym "CL".
 
