@@ -1,35 +1,88 @@
 type CacheableDocument {
   """
-  id is used as cacheId 
+  id is used as cacheId
   """
   cacheId: ID!
+  """
+  Document id
+  """
   id: ID!
 }
 
+"""
+Document with fields that were updated
+"""
 type Document {
+  """
+  Fields were updated
+  """
   fields: [Field!]!
+  """
+  id is used as cacheId
+  """
   cacheId: ID!
+  """
+  Document id
+  """
   id: ID!
 }
 
+"""
+Field in a key/value format
+"""
 type Field {
+  """
+  Key that identify the field
+  """
   key: String!
+  """
+  Value of field
+  """
   value: String!
 }
 
+"""
+Response on create a new customer document
+"""
 type DocumentPOSTResponse {
+  """
+  A URL to access the created document by API
+  """
   href: String!
+  """
+  Document id
+  """
   documentId: String!
+  """
+  id is used as cacheId
+  """
   cacheId: ID!
+  """
+  Mutation id
+  """
   id: ID!
 }
 
+"""
+Fields to create or update customer document
+"""
 input DocumentInput {
+  """
+  Fields in a key/value format
+  """
   fields: [FieldInput!]!
 }
 
-
+"""
+Field in a key/value format
+"""
 input FieldInput {
+  """
+  Key that identify the field
+  """
   key: String
+  """
+  Value of field
+  """
   value: String
 }

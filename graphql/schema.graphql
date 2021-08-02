@@ -1,10 +1,25 @@
 type Query {
+  """
+  Query to get default and custom fields created on masterdata with acronym "CL"
+  """
   schema: SchemaResponse!
+  """
+  Query to list customers with pagination and filter
+  """
   users(perPage: Int!, pageNumber: Int!, filter: String): UserPageResponse!
 }
 
 type Mutation {
+  """
+  Create a new customer with a list based on key and value. A field with key "email" is required.
+  """
   saveDocument(document: DocumentInput!): DocumentPOSTResponse!
+  """
+  Update a customer with a list based on key and value. The document id is required.
+  """
   updateDocument(id: ID!, document: DocumentInput!): Document!
+  """
+  Delete a customer based on document id
+  """
   deleteDocument(id: ID!): CacheableDocument!
 }
