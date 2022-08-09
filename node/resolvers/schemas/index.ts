@@ -1,7 +1,7 @@
 import { difference, prop, reduce } from 'ramda'
 
 import { defaultFields } from '../../utils'
-import { SchemaResponse } from '../../typings/schema'
+import type { SchemaResponse } from '../../typings/schema'
 import { getSchema } from '../../services/schemas'
 
 export const queries = {

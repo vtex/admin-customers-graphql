@@ -1,4 +1,4 @@
-import { ID } from './scalars'
+import type { ID } from './scalars'
 
 export interface CacheableDocument {
   cacheId: ID

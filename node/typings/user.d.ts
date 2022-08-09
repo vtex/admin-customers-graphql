@@ -1,4 +1,5 @@
-import { ID, Int } from './scalars'
+import type { ID } from './scalars'
+import { Int } from './scalars'
 
 export interface User {
   id: ID

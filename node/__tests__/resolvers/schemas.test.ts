@@ -1,5 +1,3 @@
-import { AuthenticationError } from '@vtex/api'
-
 import { queries } from '../../resolvers/schemas'
 import { getSchema } from '../../services/schemas'
 import schemasMock from '../../mocks/schemas'

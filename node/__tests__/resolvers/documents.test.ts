@@ -1,7 +1,5 @@
-import { AuthenticationError } from '@vtex/api'
-
 import { mutations } from '../../resolvers/documents'
-import {
+import type {
   DocumentInput,
   DocumentPOSTResponse,
   Document,

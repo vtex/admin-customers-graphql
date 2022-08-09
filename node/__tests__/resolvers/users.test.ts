@@ -1,5 +1,3 @@
-import { AuthenticationError } from '@vtex/api'
-
 import { queries } from '../../resolvers/users'
 import { search } from '../../services/users'
 import usersMock from '../../mocks/users'
