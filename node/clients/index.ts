@@ -1,4 +1,5 @@
-import { AuthType, ClientsConfig, IOClients, LRUCache } from '@vtex/api'
+import type { ClientsConfig } from '@vtex/api'
+import { AuthType, IOClients, LRUCache } from '@vtex/api'
 import { forEachObjIndexed } from 'ramda'
 
 import { CustomMasterdata } from './masterdata'

@@ -1,4 +1,4 @@
-import { UserResponse } from '../typings/user'
+import type { UserResponse } from '../typings/user'
 
 const usersMock = {
   data: [

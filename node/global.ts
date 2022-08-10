@@ -1,7 +1,7 @@
-import { ServiceContext } from '@vtex/api'
+import type { ServiceContext } from '@vtex/api'
 
-import { Clients } from './clients'
-import { Int } from './typings/scalars'
+import type { Clients } from './clients'
+import type { Int } from './typings/scalars'
 
 declare global {
   type Context = ServiceContext<Clients>

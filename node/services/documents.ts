@@ -1,7 +1,8 @@
-import { MasterData, ResolverError } from '@vtex/api'
+import type { MasterData } from '@vtex/api'
+import { ResolverError } from '@vtex/api'
 import { path } from 'ramda'
 
-import {
+import type {
   Document,
   DocumentInput,
   DocumentPOSTResponse,

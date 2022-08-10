@@ -1,6 +1,6 @@
-import { MasterData } from '@vtex/api'
+import type { MasterData } from '@vtex/api'
 
-import { DataEntitySchema, SchemaResponse } from '../typings/schema'
+import type { DataEntitySchema, SchemaResponse } from '../typings/schema'
 import { DATA_ENTITY, SCHEMA_NAME } from '../utils/constants'
 
 export const getSchema = async ({ client }: { client: MasterData }) => {

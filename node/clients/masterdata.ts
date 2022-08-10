@@ -1,9 +1,5 @@
-import {
-  AuthenticationError,
-  InstanceOptions,
-  IOContext,
-  MasterData,
-} from '@vtex/api'
+import type { InstanceOptions, IOContext } from '@vtex/api'
+import { AuthenticationError, MasterData } from '@vtex/api'
 
 export class CustomMasterdata extends MasterData {
   constructor(ctx: IOContext, options?: InstanceOptions) {

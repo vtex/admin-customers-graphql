@@ -1,4 +1,4 @@
-import { SchemaResponse } from '../typings/schema'
+import type { SchemaResponse } from '../typings/schema'
 
 const schemasMock = {
   properties: {

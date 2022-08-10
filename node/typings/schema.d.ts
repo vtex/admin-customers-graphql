@@ -1,4 +1,4 @@
-import { Int } from './scalars'
+import type { Int } from './scalars'
 
 export interface Property {
   type?: string

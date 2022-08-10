@@ -1,6 +1,6 @@
 import { prop } from 'ramda'
 
-import { UserResponse } from '../../typings/user'
+import type { UserResponse } from '../../typings/user'
 import { search } from '../../services/users'
 
 export const queries = {

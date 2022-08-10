@@ -1,6 +1,6 @@
-import { MasterData } from '@vtex/api'
+import type { MasterData } from '@vtex/api'
 
-import { User } from '../typings/user'
+import type { User } from '../typings/user'
 import { DATA_ENTITY } from '../utils/constants'
 
 export const search = async ({
